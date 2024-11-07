@@ -1,0 +1,90 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: LogLineInput
+  description: represents a log line item
+  fields:
+    - name: line
+      type: String!
+    - name: structured_metadata
+      type: JSON
+    - name: timestamp
+      type: TimestampTZ
+  graphql:
+    typeName: LogLineInput
+    inputTypeName: LogLineInput_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: LogLineInput
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: LogLineInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - line
+          - structured_metadata
+          - timestamp
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: StreamInput
+  description: represents a stream input object.
+  fields:
+    - name: stream
+      type: JSON
+    - name: values
+      type: "[LogLineInput!]!"
+  graphql:
+    typeName: StreamInput
+    inputTypeName: StreamInput_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: StreamInput
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: StreamInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - stream
+          - values
+
+---
+kind: Command
+version: v1
+definition:
+  name: loki_push_log_lines
+  outputType: Boolean!
+  arguments:
+    - name: streams
+      type: "[StreamInput!]!"
+  source:
+    dataConnectorName: myloki
+    dataConnectorCommand:
+      procedure: loki_push_log_lines
+  graphql:
+    rootFieldName: loki_push_log_lines
+    rootFieldKind: Mutation
+  description: pushes log lines to Loki
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: loki_push_log_lines
+  permissions:
+    - role: admin
+      allowExecution: true
+

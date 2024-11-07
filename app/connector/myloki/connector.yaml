@@ -1,0 +1,16 @@
+kind: Connector
+version: v2
+definition:
+  name: myloki
+  subgraph: app
+  source: hasura/loki:v0.0.2
+  context: .
+  envMapping:
+    CONNECTION_URL:
+      fromEnv: APP_MYLOKI_CONNECTION_URL
+    HASURA_SERVICE_TOKEN_SECRET:
+      fromEnv: APP_MYLOKI_HASURA_SERVICE_TOKEN_SECRET
+    OTEL_EXPORTER_OTLP_ENDPOINT:
+      fromEnv: APP_MYLOKI_OTEL_EXPORTER_OTLP_ENDPOINT
+    OTEL_SERVICE_NAME:
+      fromEnv: APP_MYLOKI_OTEL_SERVICE_NAME

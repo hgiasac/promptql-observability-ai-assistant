@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/hasura/ndc-loki/main/jsonschema/configuration.schema.json
+connection_settings:
+  url:
+    env: CONNECTION_URL
+  headers:
+    X-Scope-OrgID:
+      env: LOKI_ORG_ID
+  timeout: 30
+  max_time_range: 30d
+metadata:
+  models:
+    hasura_log:
+      pipelines:
+        - type: json
+          fields:
+            level:
+              selector: level
+            type:
+              selector: type
+      labels:
+        container_name:
+          source: container
+          filter:
+            operator: _regex
+            value: promptql-graphql-engine-.+
+            static: false
+        service_name:
+          filter:
+            operator: _regex
+            value: promptql-graphql-engine-.+
+            static: true
+    http_log:
+      pipelines:
+        - type: line_filter
+          operator: _ilike
+          value: '"type":"http-log"'
+        - type: json
+          fields:
+            http_status:
+              selector: detail.http_info.status
+            latency:
+              selector: detail.operation.query_execution_time
+            level:
+              selector: level
+            operation_name:
+              selector: detail.operation.query.operationName
+            request_url:
+              selector: detail.http_info.url
+            type:
+              selector: type
+      labels:
+        container_name:
+          source: container
+          filter:
+            operator: _regex
+            value: promptql-graphql-engine-.+
+            static: false
+        service_name:
+          filter:
+            operator: _regex
+            value: promptql-graphql-engine-.+
+            static: true
+    nginx_log:
+      pipelines:
+        - type: line_filter
+          operator: _regex
+          value: ^[0-9]+\.
+        - type: pattern
+          pattern: <remote_addr> - <remote_user> [<time_local>] "<request>" <status> <body_bytes_sent> "<http_referer>" "<http_user_agent>" <request_length> <request_time> [<proxy_upstream_name>] [<proxy_alternative_upstream_name>] <upstream_addr> <upstream_response_length> <upstream_response_time> <upstream_status> <req_id>
+          fields:
+            body_bytes_sent: {}
+            http_referer: {}
+            http_user_agent: {}
+            remote_addr: {}
+            remote_user: {}
+            request: {}
+            request_length: {}
+            request_time: {}
+            status: {}
+            time_local: {}
+      labels:
+        container_name:
+          source: container
+          filter:
+            operator: _eq
+            value: promptql-gateway-1
+            static: false
+        service_name:
+          filter:
+            operator: _eq
+            value: promptql-gateway-1
+            static: true
+  native_operations:
+    queries: {}
+runtime:
+  flat: false
+  unix_time_unit: ms
+  format:
+    timestamp: rfc3339
+    value: float64
+    nan: null
+    inf: +Inf
+    negative_inf: -Inf

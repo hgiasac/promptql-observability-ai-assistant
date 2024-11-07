@@ -1,0 +1,433 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HttpLogAggregateAggregationGroupBy
+  fields:
+    - name: by
+      type: "[HttpLogAggregateLabel!]"
+    - name: without
+      type: "[HttpLogAggregateLabel!]"
+  graphql:
+    typeName: HttpLogAggregateAggregationGroupBy
+    inputTypeName: HttpLogAggregateAggregationGroupBy_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HttpLogAggregateAggregationGroupBy
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HttpLogAggregateAggregationGroupBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - by
+          - without
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HttpLogAggregateAggregationRangeUnwrap
+  fields:
+    - name: conversion_function
+      type: ConversionFunction
+    - name: range
+      type: Duration!
+    - name: unwrap
+      type: HttpLogAggregateLabel!
+  graphql:
+    typeName: HttpLogAggregateAggregationRangeUnwrap
+    inputTypeName: HttpLogAggregateAggregationRangeUnwrap_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HttpLogAggregateAggregationRangeUnwrap
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HttpLogAggregateAggregationRangeUnwrap
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - conversion_function
+          - range
+          - unwrap
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HttpLogAggregateAggregationKInput
+  fields:
+    - name: by
+      type: "[HttpLogAggregateLabel!]"
+    - name: k
+      type: Int64!
+    - name: without
+      type: "[HttpLogAggregateLabel!]"
+  graphql:
+    typeName: HttpLogAggregateAggregationKInput
+    inputTypeName: HttpLogAggregateAggregationKInput_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HttpLogAggregateAggregationKInput
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HttpLogAggregateAggregationKInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - by
+          - k
+          - without
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HttpLogAggregateAggregationQuantileOverTime
+  fields:
+    - name: conversion_function
+      type: ConversionFunction
+    - name: quantile
+      type: Float64!
+    - name: range
+      type: Duration!
+    - name: unwrap
+      type: HttpLogAggregateLabel!
+  graphql:
+    typeName: HttpLogAggregateAggregationQuantileOverTime
+    inputTypeName: HttpLogAggregateAggregationQuantileOverTime_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HttpLogAggregateAggregationQuantileOverTime
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HttpLogAggregateAggregationQuantileOverTime
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - conversion_function
+          - quantile
+          - range
+          - unwrap
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HttpLogAggregateAggregation
+  fields:
+    - name: absent_over_time
+      type: Duration
+      description: Returns an empty vector if the range vector passed to it has any
+        elements (floats or native histograms) and a 1-element vector with the
+        value 1 if the range vector passed to it has no elements
+    - name: avg
+      type: HttpLogAggregateAggregationGroupBy
+      description: Calculate the average over labels
+    - name: avg_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The average of all values in the specified interval.
+    - name: bottomk
+      type: HttpLogAggregateAggregationKInput
+      description: Smallest k elements by sample value
+    - name: bytes_over_time
+      type: Duration
+      description: Counts the amount of bytes used by each log stream for a given range.
+    - name: bytes_rate
+      type: Duration
+      description: Calculates the number of bytes per second for each stream.
+    - name: count
+      type: HttpLogAggregateAggregationGroupBy
+      description: Count number of elements in the vector
+    - name: count_over_time
+      type: Duration
+      description: The count of all values in the specified interval
+    - name: first_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The first of all values in the specified interval.
+    - name: last_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The last of all values in the specified interval.
+    - name: max
+      type: HttpLogAggregateAggregationGroupBy
+      description: Select maximum over labels
+    - name: max_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The maximum of all values in the specified interval.
+    - name: min
+      type: HttpLogAggregateAggregationGroupBy
+      description: Select minimum over labels
+    - name: min_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The minimum of all values in the specified interval.
+    - name: quantile_over_time
+      type: HttpLogAggregateAggregationQuantileOverTime
+      description: The φ-quantile (0 ≤ φ ≤ 1) of the values in the specified interval.
+    - name: rate
+      type: Duration
+      description: Calculates the number of entries per second.
+    - name: rate_counter
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: Calculates the number of entries per second.
+    - name: sort
+      type: Ordering
+      description: Returns vector elements sorted by their sample values. Native
+        histograms are sorted by their sum of observations
+    - name: stddev
+      type: HttpLogAggregateAggregationGroupBy
+      description: Calculate the population standard deviation over labels
+    - name: stddev_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The population standard deviation of the values in the specified
+        interval.
+    - name: stdvar
+      type: HttpLogAggregateAggregationGroupBy
+      description: Calculate the population standard variance over labels
+    - name: stdvar_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The population standard variance of the values in the specified interval.
+    - name: sum
+      type: HttpLogAggregateAggregationGroupBy
+      description: Calculate sum over labels
+    - name: sum_over_time
+      type: HttpLogAggregateAggregationRangeUnwrap
+      description: The sum of all values in the specified interval
+    - name: topk
+      type: HttpLogAggregateAggregationKInput
+      description: Largest k elements by sample value
+  graphql:
+    typeName: HttpLogAggregateAggregation
+    inputTypeName: HttpLogAggregateAggregation_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HttpLogAggregateAggregation
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HttpLogAggregateAggregation
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - absent_over_time
+          - avg
+          - avg_over_time
+          - bottomk
+          - bytes_over_time
+          - bytes_rate
+          - count
+          - count_over_time
+          - first_over_time
+          - last_over_time
+          - max
+          - max_over_time
+          - min
+          - min_over_time
+          - quantile_over_time
+          - rate
+          - rate_counter
+          - sort
+          - stddev
+          - stddev_over_time
+          - stdvar
+          - stdvar_over_time
+          - sum
+          - sum_over_time
+          - topk
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HttpLogAggregate
+  fields:
+    - name: container_name
+      type: Label!
+    - name: http_status
+      type: String!
+    - name: latency
+      type: String!
+    - name: level
+      type: String!
+    - name: log_line
+      type: LogLine!
+      description: A log line if the flat values setting is enabled
+    - name: metric_value
+      type: Decimal!
+      description: Value of the instant query or the last value of a range query
+    - name: metric_values
+      type: "[MetricValue!]!"
+      description: List of metric values grouped by unique labels
+    - name: operation_name
+      type: String!
+    - name: original_labels
+      type: LabelSet!
+      description: Labels of the metric
+    - name: request_url
+      type: String!
+    - name: timestamp
+      type: Timestamp!
+      description: An instant timestamp or the last timestamp of a range query result
+    - name: type
+      type: String!
+  graphql:
+    typeName: HttpLogAggregate
+    inputTypeName: HttpLogAggregate_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HttpLogAggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HttpLogAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - container_name
+          - http_status
+          - latency
+          - level
+          - log_line
+          - metric_value
+          - metric_values
+          - operation_name
+          - original_labels
+          - request_url
+          - timestamp
+          - type
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: HttpLogAggregate_bool_exp
+  operand:
+    object:
+      type: HttpLogAggregate
+      comparableFields:
+        - fieldName: container_name
+          booleanExpressionType: Label_bool_exp
+        - fieldName: http_status
+          booleanExpressionType: String_bool_exp
+        - fieldName: latency
+          booleanExpressionType: String_bool_exp
+        - fieldName: level
+          booleanExpressionType: String_bool_exp
+        - fieldName: log_line
+          booleanExpressionType: LogLine_bool_exp
+        - fieldName: metric_value
+          booleanExpressionType: Decimal_bool_exp
+        - fieldName: operation_name
+          booleanExpressionType: String_bool_exp
+        - fieldName: original_labels
+          booleanExpressionType: LabelSet_bool_exp
+        - fieldName: request_url
+          booleanExpressionType: String_bool_exp
+        - fieldName: timestamp
+          booleanExpressionType: Timestamp_bool_exp
+        - fieldName: type
+          booleanExpressionType: String_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: HttpLogAggregate_bool_exp
+
+---
+kind: Model
+version: v1
+definition:
+  name: http_log_aggregate
+  objectType: HttpLogAggregate
+  arguments:
+    - name: aggregations
+      type: "[HttpLogAggregateAggregation!]!"
+      description: Aggregation operators for http_log_aggregate
+    - name: flat
+      type: Boolean
+      description: Flatten grouped values out the root array
+    - name: offset
+      type: Duration
+      description: The offset modifier allows changing the time offset for individual
+        instant and range vectors in a query
+    - name: step
+      type: Duration
+      description: Query resolution step width in duration format or float number of seconds
+  source:
+    dataConnectorName: myloki
+    collection: http_log_aggregate
+  filterExpressionType: HttpLogAggregate_bool_exp
+  orderableFields:
+    - fieldName: container_name
+      orderByDirections:
+        enableAll: true
+    - fieldName: http_status
+      orderByDirections:
+        enableAll: true
+    - fieldName: latency
+      orderByDirections:
+        enableAll: true
+    - fieldName: level
+      orderByDirections:
+        enableAll: true
+    - fieldName: log_line
+      orderByDirections:
+        enableAll: true
+    - fieldName: metric_value
+      orderByDirections:
+        enableAll: true
+    - fieldName: operation_name
+      orderByDirections:
+        enableAll: true
+    - fieldName: original_labels
+      orderByDirections:
+        enableAll: true
+    - fieldName: request_url
+      orderByDirections:
+        enableAll: true
+    - fieldName: timestamp
+      orderByDirections:
+        enableAll: true
+    - fieldName: type
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: http_log_aggregate
+    selectUniques: []
+    argumentsInputType: http_log_aggregate_arguments
+    orderByExpressionType: http_log_aggregate_order_by
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: http_log_aggregate
+  permissions:
+    - role: admin
+      select:
+        filter: null
+

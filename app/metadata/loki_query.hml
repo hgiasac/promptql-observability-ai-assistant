@@ -1,0 +1,99 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: VectorValue
+  description: holds a label key value pairs for the metric and single timestamp and value
+  fields:
+    - name: metric
+      type: JSON!
+    - name: time
+      type: TimestampTZ!
+    - name: value
+      type: Float64!
+  graphql:
+    typeName: VectorValue
+    inputTypeName: VectorValue_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: VectorValue
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: VectorValue
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - metric
+          - time
+          - value
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: QueryData
+  description: holds the result type and a metric vector value of the instant query response
+  fields:
+    - name: encodingFlags
+      type: "[String!]"
+    - name: resultType
+      type: String!
+    - name: vector
+      type: "[VectorValue!]"
+  graphql:
+    typeName: QueryData
+    inputTypeName: QueryData_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: QueryData
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: QueryData
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - encodingFlags
+          - resultType
+          - vector
+
+---
+kind: Command
+version: v1
+definition:
+  name: loki_query
+  outputType: QueryData!
+  arguments:
+    - name: direction
+      type: QueryDirection
+    - name: limit
+      type: Int32
+    - name: query
+      type: String!
+    - name: time
+      type: TimestampTZ
+  source:
+    dataConnectorName: myloki
+    dataConnectorCommand:
+      function: loki_query
+  graphql:
+    rootFieldName: loki_query
+    rootFieldKind: Query
+  description: allows for doing [queries against a single point in time]
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: loki_query
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,196 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NginxLog
+  fields:
+    - name: body_bytes_sent
+      type: String!
+    - name: container_name
+      type: Label!
+    - name: http_referer
+      type: String!
+    - name: http_user_agent
+      type: String!
+    - name: log_line
+      type: LogLine!
+      description: A log line if the flat values setting is enabled
+    - name: log_lines
+      type: "[StreamValue!]!"
+      description: List of log lines grouped by unique labels
+    - name: original_labels
+      type: LabelSet!
+      description: Labels of the metric
+    - name: remote_addr
+      type: String!
+    - name: remote_user
+      type: String!
+    - name: request
+      type: String!
+    - name: request_length
+      type: String!
+    - name: request_time
+      type: String!
+    - name: status
+      type: String!
+    - name: time_local
+      type: String!
+    - name: timestamp
+      type: Timestamp!
+      description: The timestamp of the current log line or the last timestamp of a
+        range query result
+  graphql:
+    typeName: NginxLog
+    inputTypeName: NginxLog_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: NginxLog
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NginxLog
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - body_bytes_sent
+          - container_name
+          - http_referer
+          - http_user_agent
+          - log_line
+          - log_lines
+          - original_labels
+          - remote_addr
+          - remote_user
+          - request
+          - request_length
+          - request_time
+          - status
+          - time_local
+          - timestamp
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: NginxLog_bool_exp
+  operand:
+    object:
+      type: NginxLog
+      comparableFields:
+        - fieldName: body_bytes_sent
+          booleanExpressionType: String_bool_exp
+        - fieldName: container_name
+          booleanExpressionType: Label_bool_exp
+        - fieldName: http_referer
+          booleanExpressionType: String_bool_exp
+        - fieldName: http_user_agent
+          booleanExpressionType: String_bool_exp
+        - fieldName: log_line
+          booleanExpressionType: LogLine_bool_exp
+        - fieldName: original_labels
+          booleanExpressionType: LabelSet_bool_exp
+        - fieldName: remote_addr
+          booleanExpressionType: String_bool_exp
+        - fieldName: remote_user
+          booleanExpressionType: String_bool_exp
+        - fieldName: request
+          booleanExpressionType: String_bool_exp
+        - fieldName: request_length
+          booleanExpressionType: String_bool_exp
+        - fieldName: request_time
+          booleanExpressionType: String_bool_exp
+        - fieldName: status
+          booleanExpressionType: String_bool_exp
+        - fieldName: time_local
+          booleanExpressionType: String_bool_exp
+        - fieldName: timestamp
+          booleanExpressionType: Timestamp_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: NginxLog_bool_exp
+
+---
+kind: Model
+version: v1
+definition:
+  name: nginx_log
+  objectType: NginxLog
+  arguments:
+    - name: flat
+      type: Boolean
+      description: Flatten grouped values out the root array
+    - name: interval
+      type: Duration
+      description: Only return entries at (or greater than) the specified interval,
+        can be a duration format or float number of seconds
+  source:
+    dataConnectorName: myloki
+    collection: nginx_log
+  filterExpressionType: NginxLog_bool_exp
+  orderableFields:
+    - fieldName: body_bytes_sent
+      orderByDirections:
+        enableAll: true
+    - fieldName: container_name
+      orderByDirections:
+        enableAll: true
+    - fieldName: http_referer
+      orderByDirections:
+        enableAll: true
+    - fieldName: http_user_agent
+      orderByDirections:
+        enableAll: true
+    - fieldName: log_line
+      orderByDirections:
+        enableAll: true
+    - fieldName: original_labels
+      orderByDirections:
+        enableAll: true
+    - fieldName: remote_addr
+      orderByDirections:
+        enableAll: true
+    - fieldName: remote_user
+      orderByDirections:
+        enableAll: true
+    - fieldName: request
+      orderByDirections:
+        enableAll: true
+    - fieldName: request_length
+      orderByDirections:
+        enableAll: true
+    - fieldName: request_time
+      orderByDirections:
+        enableAll: true
+    - fieldName: status
+      orderByDirections:
+        enableAll: true
+    - fieldName: time_local
+      orderByDirections:
+        enableAll: true
+    - fieldName: timestamp
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: nginx_log
+    selectUniques: []
+    argumentsInputType: nginx_log_arguments
+    orderByExpressionType: nginx_log_order_by
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: nginx_log
+  permissions:
+    - role: admin
+      select:
+        filter: null
+

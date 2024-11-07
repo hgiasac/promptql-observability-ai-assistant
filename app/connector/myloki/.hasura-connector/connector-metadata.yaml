@@ -1,0 +1,18 @@
+packagingDefinition:
+  type: PrebuiltDockerImage
+  dockerImage: ghcr.io/hasura/ndc-loki:v0.0.2
+documentationPage: https://github.com/hasura/ndc-loki
+supportedEnvironmentVariables:
+  - name: CONNECTION_URL
+    description: The connection URL to the Loki server
+    required: true
+commands:
+  update: ndc-loki update
+cliPlugin:
+  name: ndc-loki
+  version: v0.0.2
+dockerComposeWatch:
+  # copy config files into the existing container and restart it
+  - path: ./configuration.yaml
+    target: /etc/connector/configuration.yaml
+    action: sync+restart

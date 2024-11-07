@@ -1,0 +1,33 @@
+---
+kind: Command
+version: v1
+definition:
+  name: loki_create_log_deletion_request
+  outputType: Boolean!
+  arguments:
+    - name: end
+      type: TimestampTZ
+    - name: max_interval
+      type: Duration
+    - name: query
+      type: String!
+    - name: start
+      type: TimestampTZ
+  source:
+    dataConnectorName: myloki
+    dataConnectorCommand:
+      procedure: loki_create_log_deletion_request
+  graphql:
+    rootFieldName: loki_create_log_deletion_request
+    rootFieldKind: Mutation
+  description: creates a new log deletion request for the authenticated tenant
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: loki_create_log_deletion_request
+  permissions:
+    - role: admin
+      allowExecution: true
+

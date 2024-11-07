@@ -1,0 +1,164 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: StreamValue
+  description: A log stream value of the query result
+  fields:
+    - name: timestamp
+      type: Timestamp!
+      description: Timestamp of the log line
+    - name: value
+      type: LogLine!
+      description: The log line content
+  graphql:
+    typeName: StreamValue
+    inputTypeName: StreamValue_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: StreamValue
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: StreamValue
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - timestamp
+          - value
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HasuraLog
+  fields:
+    - name: container_name
+      type: Label!
+    - name: level
+      type: String!
+    - name: log_line
+      type: LogLine!
+      description: A log line if the flat values setting is enabled
+    - name: log_lines
+      type: "[StreamValue!]!"
+      description: List of log lines grouped by unique labels
+    - name: original_labels
+      type: LabelSet!
+      description: Labels of the metric
+    - name: timestamp
+      type: Timestamp!
+      description: The timestamp of the current log line or the last timestamp of a
+        range query result
+    - name: type
+      type: String!
+  graphql:
+    typeName: HasuraLog
+    inputTypeName: HasuraLog_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HasuraLog
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HasuraLog
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - container_name
+          - level
+          - log_line
+          - log_lines
+          - original_labels
+          - timestamp
+          - type
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: HasuraLog_bool_exp
+  operand:
+    object:
+      type: HasuraLog
+      comparableFields:
+        - fieldName: container_name
+          booleanExpressionType: Label_bool_exp
+        - fieldName: level
+          booleanExpressionType: String_bool_exp
+        - fieldName: log_line
+          booleanExpressionType: LogLine_bool_exp
+        - fieldName: original_labels
+          booleanExpressionType: LabelSet_bool_exp
+        - fieldName: timestamp
+          booleanExpressionType: Timestamp_bool_exp
+        - fieldName: type
+          booleanExpressionType: String_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: HasuraLog_bool_exp
+
+---
+kind: Model
+version: v1
+definition:
+  name: hasura_log
+  objectType: HasuraLog
+  arguments:
+    - name: flat
+      type: Boolean
+      description: Flatten grouped values out the root array
+    - name: interval
+      type: Duration
+      description: Only return entries at (or greater than) the specified interval,
+        can be a duration format or float number of seconds
+  source:
+    dataConnectorName: myloki
+    collection: hasura_log
+  filterExpressionType: HasuraLog_bool_exp
+  orderableFields:
+    - fieldName: container_name
+      orderByDirections:
+        enableAll: true
+    - fieldName: level
+      orderByDirections:
+        enableAll: true
+    - fieldName: log_line
+      orderByDirections:
+        enableAll: true
+    - fieldName: original_labels
+      orderByDirections:
+        enableAll: true
+    - fieldName: timestamp
+      orderByDirections:
+        enableAll: true
+    - fieldName: type
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: hasura_log
+    selectUniques: []
+    argumentsInputType: hasura_log_arguments
+    orderByExpressionType: hasura_log_order_by
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: hasura_log
+  permissions:
+    - role: admin
+      select:
+        filter: null
+

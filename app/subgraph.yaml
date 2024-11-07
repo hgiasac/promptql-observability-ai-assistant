@@ -1,0 +1,19 @@
+kind: Subgraph
+version: v2
+definition:
+  name: app
+  generator:
+    rootPath: .
+    namingConvention: none
+  includePaths:
+    - metadata
+  envMapping:
+    APP_MYLOKI_AUTHORIZATION_HEADER:
+      fromEnv: APP_MYLOKI_AUTHORIZATION_HEADER
+    APP_MYLOKI_READ_URL:
+      fromEnv: APP_MYLOKI_READ_URL
+    APP_MYLOKI_WRITE_URL:
+      fromEnv: APP_MYLOKI_WRITE_URL
+  connectors:
+    - path: connector/myloki/connector.yaml
+      connectorLinkName: myloki

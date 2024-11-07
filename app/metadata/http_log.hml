@@ -1,0 +1,164 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HttpLog
+  fields:
+    - name: container_name
+      type: Label!
+    - name: http_status
+      type: String!
+    - name: latency
+      type: String!
+    - name: level
+      type: String!
+    - name: log_line
+      type: LogLine!
+      description: A log line if the flat values setting is enabled
+    - name: log_lines
+      type: "[StreamValue!]!"
+      description: List of log lines grouped by unique labels
+    - name: operation_name
+      type: String!
+    - name: original_labels
+      type: LabelSet!
+      description: Labels of the metric
+    - name: request_url
+      type: String!
+    - name: timestamp
+      type: Timestamp!
+      description: The timestamp of the current log line or the last timestamp of a
+        range query result
+    - name: type
+      type: String!
+  graphql:
+    typeName: HttpLog
+    inputTypeName: HttpLog_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: HttpLog
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HttpLog
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - container_name
+          - http_status
+          - latency
+          - level
+          - log_line
+          - log_lines
+          - operation_name
+          - original_labels
+          - request_url
+          - timestamp
+          - type
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: HttpLog_bool_exp
+  operand:
+    object:
+      type: HttpLog
+      comparableFields:
+        - fieldName: container_name
+          booleanExpressionType: Label_bool_exp
+        - fieldName: http_status
+          booleanExpressionType: String_bool_exp
+        - fieldName: latency
+          booleanExpressionType: String_bool_exp
+        - fieldName: level
+          booleanExpressionType: String_bool_exp
+        - fieldName: log_line
+          booleanExpressionType: LogLine_bool_exp
+        - fieldName: operation_name
+          booleanExpressionType: String_bool_exp
+        - fieldName: original_labels
+          booleanExpressionType: LabelSet_bool_exp
+        - fieldName: request_url
+          booleanExpressionType: String_bool_exp
+        - fieldName: timestamp
+          booleanExpressionType: Timestamp_bool_exp
+        - fieldName: type
+          booleanExpressionType: String_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: HttpLog_bool_exp
+
+---
+kind: Model
+version: v1
+definition:
+  name: http_log
+  objectType: HttpLog
+  arguments:
+    - name: flat
+      type: Boolean
+      description: Flatten grouped values out the root array
+    - name: interval
+      type: Duration
+      description: Only return entries at (or greater than) the specified interval,
+        can be a duration format or float number of seconds
+  source:
+    dataConnectorName: myloki
+    collection: http_log
+  filterExpressionType: HttpLog_bool_exp
+  orderableFields:
+    - fieldName: container_name
+      orderByDirections:
+        enableAll: true
+    - fieldName: http_status
+      orderByDirections:
+        enableAll: true
+    - fieldName: latency
+      orderByDirections:
+        enableAll: true
+    - fieldName: level
+      orderByDirections:
+        enableAll: true
+    - fieldName: log_line
+      orderByDirections:
+        enableAll: true
+    - fieldName: operation_name
+      orderByDirections:
+        enableAll: true
+    - fieldName: original_labels
+      orderByDirections:
+        enableAll: true
+    - fieldName: request_url
+      orderByDirections:
+        enableAll: true
+    - fieldName: timestamp
+      orderByDirections:
+        enableAll: true
+    - fieldName: type
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: http_log
+    selectUniques: []
+    argumentsInputType: http_log_arguments
+    orderByExpressionType: http_log_order_by
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: http_log
+  permissions:
+    - role: admin
+      select:
+        filter: null
+

@@ -1,0 +1,21 @@
+kind: Subgraph
+version: v2
+definition:
+  name: prometheus
+  generator:
+    rootPath: .
+    namingConvention: none
+    graphqlRootFieldPrefix: prom_
+    graphqlTypeNamePrefix: prom_
+  includePaths:
+    - metadata
+  envMapping:
+    PROMETHEUS_MYPROMETHEUS_AUTHORIZATION_HEADER:
+      fromEnv: PROMETHEUS_MYPROMETHEUS_AUTHORIZATION_HEADER
+    PROMETHEUS_MYPROMETHEUS_READ_URL:
+      fromEnv: PROMETHEUS_MYPROMETHEUS_READ_URL
+    PROMETHEUS_MYPROMETHEUS_WRITE_URL:
+      fromEnv: PROMETHEUS_MYPROMETHEUS_WRITE_URL
+  connectors:
+    - path: connector/myprometheus/connector.yaml
+      connectorLinkName: myprometheus

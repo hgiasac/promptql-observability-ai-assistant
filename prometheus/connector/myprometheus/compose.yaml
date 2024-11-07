@@ -1,0 +1,14 @@
+services:
+  prometheus_myprometheus:
+    build:
+      context: .
+      dockerfile: .hasura-connector/Dockerfile.myprometheus
+    environment:
+      CONNECTION_URL: $PROMETHEUS_MYPROMETHEUS_CONNECTION_URL
+      HASURA_SERVICE_TOKEN_SECRET: $PROMETHEUS_MYPROMETHEUS_HASURA_SERVICE_TOKEN_SECRET
+      OTEL_EXPORTER_OTLP_ENDPOINT: $PROMETHEUS_MYPROMETHEUS_OTEL_EXPORTER_OTLP_ENDPOINT
+      OTEL_SERVICE_NAME: $PROMETHEUS_MYPROMETHEUS_OTEL_SERVICE_NAME
+    extra_hosts:
+      - local.hasura.dev:host-gateway
+    ports:
+      - 4164:8080

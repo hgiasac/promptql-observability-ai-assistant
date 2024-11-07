@@ -1,0 +1,54 @@
+- name: album_insert
+  webhook: http://gateway:8080/v1/graphql
+  schedule: "* * * * *"
+  include_in_metadata: true
+  payload:
+    operationName: CreateAlbum
+    query: 'mutation CreateAlbum { insert_Album(objects: [{ Title: "random album", ArtistId: 1}]) {affected_rows}}'
+    variables: null
+  comment: ""
+  request_transform:
+    body:
+      action: transform
+      template: |-
+        {
+          "operationName": "CreateAlbum",
+          "query": "mutation CreateAlbum { insert_Album(objects: [{ Title: \"random album\", ArtistId: 1}]) {affected_rows}}",
+          "variables": null
+        }
+    template_engine: Kriti
+    version: 2
+- name: cron_failure
+  webhook: http://gateway:8080/v1/graphql
+  schedule: "* * * * *"
+  include_in_metadata: true
+  payload: {}
+  request_transform:
+    body:
+      action: transform
+      template: |-
+        {
+          "operationName": "GetAlbumError",
+          "query": "query GetAlbumError { Album(limit: 1) { foo }}",
+          "variables": null
+        }
+    template_engine: Kriti
+    version: 2
+  comment: ""
+- name: cron_success
+  webhook: http://gateway:8080/v1/graphql
+  schedule: "* * * * *"
+  include_in_metadata: true
+  payload: {}
+  comment: ""
+  request_transform:
+    body:
+      action: transform
+      template: |-
+        {
+          "operationName": "GetAlbum",
+          "query": "query GetAlbum { Album(limit: 1) { Title ArtistId }}",
+          "variables": null
+        }
+    template_engine: Kriti
+    version: 2

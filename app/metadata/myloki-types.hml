@@ -1,0 +1,734 @@
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Duration
+  graphql:
+    typeName: Duration
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Duration_bool_exp
+  operand:
+    scalar:
+      type: Duration
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Duration
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Duration_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Duration
+  representation: Duration
+  graphql:
+    comparisonExpressionTypeName: Duration_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Label
+  graphql:
+    typeName: Label
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: JSON
+  graphql:
+    typeName: JSON
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: JSON_bool_exp
+  operand:
+    scalar:
+      type: JSON
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: JSON
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: JSON_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: JSON
+  representation: JSON
+  graphql:
+    comparisonExpressionTypeName: JSON_comparison_exp
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Label_bool_exp
+  operand:
+    scalar:
+      type: Label
+      comparisonOperators:
+        - name: _eq
+          argumentType: Label!
+        - name: _in
+          argumentType: JSON!
+        - name: _neq
+          argumentType: Label!
+        - name: _nin
+          argumentType: "[Label!]!"
+        - name: _nregex
+          argumentType: Label!
+        - name: _regex
+          argumentType: Label!
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Label
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Label_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Label
+  representation: Label
+  graphql:
+    comparisonExpressionTypeName: Label_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: LogLine
+  graphql:
+    typeName: LogLine
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: LogLine_bool_exp
+  operand:
+    scalar:
+      type: LogLine
+      comparisonOperators:
+        - name: _ilike
+          argumentType: LogLine!
+        - name: _ip
+          argumentType: LogLine!
+        - name: _like
+          argumentType: LogLine!
+        - name: _nilike
+          argumentType: LogLine!
+        - name: _nip
+          argumentType: LogLine!
+        - name: _nlike
+          argumentType: LogLine!
+        - name: _nregex
+          argumentType: LogLine!
+        - name: _regex
+          argumentType: LogLine!
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: LogLine
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: LogLine_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: LogLine
+  representation: LogLine
+  graphql:
+    comparisonExpressionTypeName: LogLine_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Timestamp
+  graphql:
+    typeName: Timestamp
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Timestamp_bool_exp
+  operand:
+    scalar:
+      type: Timestamp
+      comparisonOperators:
+        - name: _eq
+          argumentType: Timestamp!
+        - name: _gt
+          argumentType: Timestamp!
+        - name: _lt
+          argumentType: Timestamp!
+        - name: _since
+          argumentType: Duration!
+        - name: _gte
+          argumentType: Timestamp!
+        - name: _lte
+          argumentType: Timestamp!
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Timestamp
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Timestamp_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Timestamp
+  representation: Timestamp
+  graphql:
+    comparisonExpressionTypeName: Timestamp_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: LabelSet
+  graphql:
+    typeName: LabelSet
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: LabelSet_bool_exp
+  operand:
+    scalar:
+      type: LabelSet
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: LabelSet
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: LabelSet_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: LabelSet
+  representation: LabelSet
+  graphql:
+    comparisonExpressionTypeName: LabelSet_comparison_exp
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: String_bool_exp
+  operand:
+    scalar:
+      type: String
+      comparisonOperators:
+        - name: _eq
+          argumentType: String!
+        - name: _in
+          argumentType: JSON!
+        - name: _ip
+          argumentType: Label!
+        - name: _neq
+          argumentType: Label!
+        - name: _nin
+          argumentType: "[Label!]!"
+        - name: _nip
+          argumentType: Label!
+        - name: _nregex
+          argumentType: Label!
+        - name: _regex
+          argumentType: Label!
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: String
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: String_bool_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: HasuraLogAggregateLabel
+  graphql:
+    typeName: HasuraLogAggregateLabel
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: HasuraLogAggregateLabel_bool_exp
+  operand:
+    scalar:
+      type: HasuraLogAggregateLabel
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: HasuraLogAggregateLabel
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: HasuraLogAggregateLabel_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: HasuraLogAggregateLabel
+  representation: HasuraLogAggregateLabel
+  graphql:
+    comparisonExpressionTypeName: HasuraLogAggregateLabel_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ConversionFunction
+  graphql:
+    typeName: ConversionFunction
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ConversionFunction_bool_exp
+  operand:
+    scalar:
+      type: ConversionFunction
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: ConversionFunction
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ConversionFunction_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: ConversionFunction
+  representation: ConversionFunction
+  graphql:
+    comparisonExpressionTypeName: ConversionFunction_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Int64
+  graphql:
+    typeName: Int64
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Int64_bool_exp
+  operand:
+    scalar:
+      type: Int64
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Int64
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Int64_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Int64
+  representation: Int64
+  graphql:
+    comparisonExpressionTypeName: Int64_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Float64
+  graphql:
+    typeName: Float64
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Float64_bool_exp
+  operand:
+    scalar:
+      type: Float64
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Float64
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Float64_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Float64
+  representation: Float64
+  graphql:
+    comparisonExpressionTypeName: Float64_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Ordering
+  graphql:
+    typeName: Ordering
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Ordering_bool_exp
+  operand:
+    scalar:
+      type: Ordering
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Ordering
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Ordering_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Ordering
+  representation: Ordering
+  graphql:
+    comparisonExpressionTypeName: Ordering_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Decimal
+  graphql:
+    typeName: Decimal
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Decimal_bool_exp
+  operand:
+    scalar:
+      type: Decimal
+      comparisonOperators:
+        - name: _eq
+          argumentType: Decimal!
+        - name: _gt
+          argumentType: Decimal!
+        - name: _gte
+          argumentType: Decimal!
+        - name: _lt
+          argumentType: Decimal!
+        - name: _lte
+          argumentType: Decimal!
+        - name: _neq
+          argumentType: Decimal!
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Decimal
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Decimal_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Decimal
+  representation: Decimal
+  graphql:
+    comparisonExpressionTypeName: Decimal_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: HttpLogAggregateLabel
+  graphql:
+    typeName: HttpLogAggregateLabel
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: HttpLogAggregateLabel_bool_exp
+  operand:
+    scalar:
+      type: HttpLogAggregateLabel
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: HttpLogAggregateLabel
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: HttpLogAggregateLabel_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: HttpLogAggregateLabel
+  representation: HttpLogAggregateLabel
+  graphql:
+    comparisonExpressionTypeName: HttpLogAggregateLabel_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: NginxLogAggregateLabel
+  graphql:
+    typeName: NginxLogAggregateLabel
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: NginxLogAggregateLabel_bool_exp
+  operand:
+    scalar:
+      type: NginxLogAggregateLabel
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: NginxLogAggregateLabel
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: NginxLogAggregateLabel_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: NginxLogAggregateLabel
+  representation: NginxLogAggregateLabel
+  graphql:
+    comparisonExpressionTypeName: NginxLogAggregateLabel_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: TimestampTZ
+  graphql:
+    typeName: TimestampTZ
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: TimestampTZ_bool_exp
+  operand:
+    scalar:
+      type: TimestampTZ
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: TimestampTZ
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: TimestampTZ_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: TimestampTZ
+  representation: TimestampTZ
+  graphql:
+    comparisonExpressionTypeName: TimestampTZ_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: QueryDirection
+  graphql:
+    typeName: QueryDirection
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: QueryDirection_bool_exp
+  operand:
+    scalar:
+      type: QueryDirection
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: QueryDirection
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: QueryDirection_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: QueryDirection
+  representation: QueryDirection
+  graphql:
+    comparisonExpressionTypeName: QueryDirection_comparison_exp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Int32
+  graphql:
+    typeName: Int32
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Int32_bool_exp
+  operand:
+    scalar:
+      type: Int32
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: myloki
+          dataConnectorScalarType: Int32
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: Int32_bool_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Int32
+  representation: Int32
+  graphql:
+    comparisonExpressionTypeName: Int32_comparison_exp
+

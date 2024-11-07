@@ -1,0 +1,465 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NginxLogAggregateAggregationGroupBy
+  fields:
+    - name: by
+      type: "[NginxLogAggregateLabel!]"
+    - name: without
+      type: "[NginxLogAggregateLabel!]"
+  graphql:
+    typeName: NginxLogAggregateAggregationGroupBy
+    inputTypeName: NginxLogAggregateAggregationGroupBy_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: NginxLogAggregateAggregationGroupBy
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NginxLogAggregateAggregationGroupBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - by
+          - without
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NginxLogAggregateAggregationRangeUnwrap
+  fields:
+    - name: conversion_function
+      type: ConversionFunction
+    - name: range
+      type: Duration!
+    - name: unwrap
+      type: NginxLogAggregateLabel!
+  graphql:
+    typeName: NginxLogAggregateAggregationRangeUnwrap
+    inputTypeName: NginxLogAggregateAggregationRangeUnwrap_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: NginxLogAggregateAggregationRangeUnwrap
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NginxLogAggregateAggregationRangeUnwrap
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - conversion_function
+          - range
+          - unwrap
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NginxLogAggregateAggregationKInput
+  fields:
+    - name: by
+      type: "[NginxLogAggregateLabel!]"
+    - name: k
+      type: Int64!
+    - name: without
+      type: "[NginxLogAggregateLabel!]"
+  graphql:
+    typeName: NginxLogAggregateAggregationKInput
+    inputTypeName: NginxLogAggregateAggregationKInput_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: NginxLogAggregateAggregationKInput
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NginxLogAggregateAggregationKInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - by
+          - k
+          - without
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NginxLogAggregateAggregationQuantileOverTime
+  fields:
+    - name: conversion_function
+      type: ConversionFunction
+    - name: quantile
+      type: Float64!
+    - name: range
+      type: Duration!
+    - name: unwrap
+      type: NginxLogAggregateLabel!
+  graphql:
+    typeName: NginxLogAggregateAggregationQuantileOverTime
+    inputTypeName: NginxLogAggregateAggregationQuantileOverTime_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: NginxLogAggregateAggregationQuantileOverTime
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NginxLogAggregateAggregationQuantileOverTime
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - conversion_function
+          - quantile
+          - range
+          - unwrap
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NginxLogAggregateAggregation
+  fields:
+    - name: absent_over_time
+      type: Duration
+      description: Returns an empty vector if the range vector passed to it has any
+        elements (floats or native histograms) and a 1-element vector with the
+        value 1 if the range vector passed to it has no elements
+    - name: avg
+      type: NginxLogAggregateAggregationGroupBy
+      description: Calculate the average over labels
+    - name: avg_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The average of all values in the specified interval.
+    - name: bottomk
+      type: NginxLogAggregateAggregationKInput
+      description: Smallest k elements by sample value
+    - name: bytes_over_time
+      type: Duration
+      description: Counts the amount of bytes used by each log stream for a given range.
+    - name: bytes_rate
+      type: Duration
+      description: Calculates the number of bytes per second for each stream.
+    - name: count
+      type: NginxLogAggregateAggregationGroupBy
+      description: Count number of elements in the vector
+    - name: count_over_time
+      type: Duration
+      description: The count of all values in the specified interval
+    - name: first_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The first of all values in the specified interval.
+    - name: last_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The last of all values in the specified interval.
+    - name: max
+      type: NginxLogAggregateAggregationGroupBy
+      description: Select maximum over labels
+    - name: max_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The maximum of all values in the specified interval.
+    - name: min
+      type: NginxLogAggregateAggregationGroupBy
+      description: Select minimum over labels
+    - name: min_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The minimum of all values in the specified interval.
+    - name: quantile_over_time
+      type: NginxLogAggregateAggregationQuantileOverTime
+      description: The φ-quantile (0 ≤ φ ≤ 1) of the values in the specified interval.
+    - name: rate
+      type: Duration
+      description: Calculates the number of entries per second.
+    - name: rate_counter
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: Calculates the number of entries per second.
+    - name: sort
+      type: Ordering
+      description: Returns vector elements sorted by their sample values. Native
+        histograms are sorted by their sum of observations
+    - name: stddev
+      type: NginxLogAggregateAggregationGroupBy
+      description: Calculate the population standard deviation over labels
+    - name: stddev_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The population standard deviation of the values in the specified
+        interval.
+    - name: stdvar
+      type: NginxLogAggregateAggregationGroupBy
+      description: Calculate the population standard variance over labels
+    - name: stdvar_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The population standard variance of the values in the specified interval.
+    - name: sum
+      type: NginxLogAggregateAggregationGroupBy
+      description: Calculate sum over labels
+    - name: sum_over_time
+      type: NginxLogAggregateAggregationRangeUnwrap
+      description: The sum of all values in the specified interval
+    - name: topk
+      type: NginxLogAggregateAggregationKInput
+      description: Largest k elements by sample value
+  graphql:
+    typeName: NginxLogAggregateAggregation
+    inputTypeName: NginxLogAggregateAggregation_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: NginxLogAggregateAggregation
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NginxLogAggregateAggregation
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - absent_over_time
+          - avg
+          - avg_over_time
+          - bottomk
+          - bytes_over_time
+          - bytes_rate
+          - count
+          - count_over_time
+          - first_over_time
+          - last_over_time
+          - max
+          - max_over_time
+          - min
+          - min_over_time
+          - quantile_over_time
+          - rate
+          - rate_counter
+          - sort
+          - stddev
+          - stddev_over_time
+          - stdvar
+          - stdvar_over_time
+          - sum
+          - sum_over_time
+          - topk
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NginxLogAggregate
+  fields:
+    - name: body_bytes_sent
+      type: String!
+    - name: container_name
+      type: Label!
+    - name: http_referer
+      type: String!
+    - name: http_user_agent
+      type: String!
+    - name: log_line
+      type: LogLine!
+      description: A log line if the flat values setting is enabled
+    - name: metric_value
+      type: Decimal!
+      description: Value of the instant query or the last value of a range query
+    - name: metric_values
+      type: "[MetricValue!]!"
+      description: List of metric values grouped by unique labels
+    - name: original_labels
+      type: LabelSet!
+      description: Labels of the metric
+    - name: remote_addr
+      type: String!
+    - name: remote_user
+      type: String!
+    - name: request
+      type: String!
+    - name: request_length
+      type: String!
+    - name: request_time
+      type: String!
+    - name: status
+      type: String!
+    - name: time_local
+      type: String!
+    - name: timestamp
+      type: Timestamp!
+      description: An instant timestamp or the last timestamp of a range query result
+  graphql:
+    typeName: NginxLogAggregate
+    inputTypeName: NginxLogAggregate_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: NginxLogAggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NginxLogAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - body_bytes_sent
+          - container_name
+          - http_referer
+          - http_user_agent
+          - log_line
+          - metric_value
+          - metric_values
+          - original_labels
+          - remote_addr
+          - remote_user
+          - request
+          - request_length
+          - request_time
+          - status
+          - time_local
+          - timestamp
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: NginxLogAggregate_bool_exp
+  operand:
+    object:
+      type: NginxLogAggregate
+      comparableFields:
+        - fieldName: body_bytes_sent
+          booleanExpressionType: String_bool_exp
+        - fieldName: container_name
+          booleanExpressionType: Label_bool_exp
+        - fieldName: http_referer
+          booleanExpressionType: String_bool_exp
+        - fieldName: http_user_agent
+          booleanExpressionType: String_bool_exp
+        - fieldName: log_line
+          booleanExpressionType: LogLine_bool_exp
+        - fieldName: metric_value
+          booleanExpressionType: Decimal_bool_exp
+        - fieldName: original_labels
+          booleanExpressionType: LabelSet_bool_exp
+        - fieldName: remote_addr
+          booleanExpressionType: String_bool_exp
+        - fieldName: remote_user
+          booleanExpressionType: String_bool_exp
+        - fieldName: request
+          booleanExpressionType: String_bool_exp
+        - fieldName: request_length
+          booleanExpressionType: String_bool_exp
+        - fieldName: request_time
+          booleanExpressionType: String_bool_exp
+        - fieldName: status
+          booleanExpressionType: String_bool_exp
+        - fieldName: time_local
+          booleanExpressionType: String_bool_exp
+        - fieldName: timestamp
+          booleanExpressionType: Timestamp_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: NginxLogAggregate_bool_exp
+
+---
+kind: Model
+version: v1
+definition:
+  name: nginx_log_aggregate
+  objectType: NginxLogAggregate
+  arguments:
+    - name: aggregations
+      type: "[NginxLogAggregateAggregation!]!"
+      description: Aggregation operators for nginx_log_aggregate
+    - name: flat
+      type: Boolean
+      description: Flatten grouped values out the root array
+    - name: offset
+      type: Duration
+      description: The offset modifier allows changing the time offset for individual
+        instant and range vectors in a query
+    - name: step
+      type: Duration
+      description: Query resolution step width in duration format or float number of seconds
+  source:
+    dataConnectorName: myloki
+    collection: nginx_log_aggregate
+  filterExpressionType: NginxLogAggregate_bool_exp
+  orderableFields:
+    - fieldName: body_bytes_sent
+      orderByDirections:
+        enableAll: true
+    - fieldName: container_name
+      orderByDirections:
+        enableAll: true
+    - fieldName: http_referer
+      orderByDirections:
+        enableAll: true
+    - fieldName: http_user_agent
+      orderByDirections:
+        enableAll: true
+    - fieldName: log_line
+      orderByDirections:
+        enableAll: true
+    - fieldName: metric_value
+      orderByDirections:
+        enableAll: true
+    - fieldName: original_labels
+      orderByDirections:
+        enableAll: true
+    - fieldName: remote_addr
+      orderByDirections:
+        enableAll: true
+    - fieldName: remote_user
+      orderByDirections:
+        enableAll: true
+    - fieldName: request
+      orderByDirections:
+        enableAll: true
+    - fieldName: request_length
+      orderByDirections:
+        enableAll: true
+    - fieldName: request_time
+      orderByDirections:
+        enableAll: true
+    - fieldName: status
+      orderByDirections:
+        enableAll: true
+    - fieldName: time_local
+      orderByDirections:
+        enableAll: true
+    - fieldName: timestamp
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: nginx_log_aggregate
+    selectUniques: []
+    argumentsInputType: nginx_log_aggregate_arguments
+    orderByExpressionType: nginx_log_aggregate_order_by
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: nginx_log_aggregate
+  permissions:
+    - role: admin
+      select:
+        filter: null
+

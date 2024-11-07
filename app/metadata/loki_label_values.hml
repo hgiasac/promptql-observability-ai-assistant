@@ -1,0 +1,35 @@
+---
+kind: Command
+version: v1
+definition:
+  name: loki_label_values
+  outputType: "[String!]!"
+  arguments:
+    - name: end
+      type: TimestampTZ
+    - name: name
+      type: String!
+    - name: query
+      type: String
+    - name: since
+      type: Duration
+    - name: start
+      type: TimestampTZ
+  source:
+    dataConnectorName: myloki
+    dataConnectorCommand:
+      function: loki_label_values
+  graphql:
+    rootFieldName: loki_label_values
+    rootFieldKind: Query
+  description: retrieve the list of known values for a given label within a given time span.
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: loki_label_values
+  permissions:
+    - role: admin
+      allowExecution: true
+

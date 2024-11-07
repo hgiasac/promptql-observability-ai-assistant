@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: loki_cancel_log_deletion_request
+  outputType: Boolean!
+  arguments:
+    - name: force
+      type: Boolean
+    - name: request_id
+      type: String!
+  source:
+    dataConnectorName: myloki
+    dataConnectorCommand:
+      procedure: loki_cancel_log_deletion_request
+  graphql:
+    rootFieldName: loki_cancel_log_deletion_request
+    rootFieldKind: Mutation
+  description: cancels a new log deletion request for the authenticated tenant
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: loki_cancel_log_deletion_request
+  permissions:
+    - role: admin
+      allowExecution: true
+

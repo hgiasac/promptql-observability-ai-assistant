@@ -1,0 +1,2049 @@
+kind: DataConnectorLink
+version: v1
+definition:
+  name: myloki
+  url:
+    readWriteUrls:
+      read:
+        valueFromEnv: APP_MYLOKI_READ_URL
+      write:
+        valueFromEnv: APP_MYLOKI_WRITE_URL
+  headers:
+    Authorization:
+      valueFromEnv: APP_MYLOKI_AUTHORIZATION_HEADER
+  schema:
+    version: v0.1
+    schema:
+      scalar_types:
+        Boolean:
+          representation:
+            type: boolean
+          aggregate_functions: {}
+          comparison_operators: {}
+        ConversionFunction:
+          representation:
+            type: enum
+            one_of:
+              - duration
+              - duration_seconds
+              - bytes
+          aggregate_functions: {}
+          comparison_operators: {}
+        Decimal:
+          representation:
+            type: bigdecimal
+          aggregate_functions: {}
+          comparison_operators:
+            _eq:
+              type: equal
+            _gt:
+              type: custom
+              argument_type:
+                type: named
+                name: Decimal
+            _gte:
+              type: custom
+              argument_type:
+                type: named
+                name: Decimal
+            _lt:
+              type: custom
+              argument_type:
+                type: named
+                name: Decimal
+            _lte:
+              type: custom
+              argument_type:
+                type: named
+                name: Decimal
+            _neq:
+              type: custom
+              argument_type:
+                type: named
+                name: Decimal
+        Duration:
+          representation:
+            type: json
+          aggregate_functions: {}
+          comparison_operators: {}
+        Float64:
+          representation:
+            type: float64
+          aggregate_functions: {}
+          comparison_operators: {}
+        HasuraLogAggregateLabel:
+          representation:
+            type: enum
+            one_of:
+              - container_name
+              - level
+              - type
+          aggregate_functions: {}
+          comparison_operators: {}
+        HttpLogAggregateLabel:
+          representation:
+            type: enum
+            one_of:
+              - container_name
+              - http_status
+              - latency
+              - level
+              - operation_name
+              - request_url
+              - type
+          aggregate_functions: {}
+          comparison_operators: {}
+        Int32:
+          representation:
+            type: int32
+          aggregate_functions: {}
+          comparison_operators: {}
+        Int64:
+          representation:
+            type: int64
+          aggregate_functions: {}
+          comparison_operators: {}
+        JSON:
+          representation:
+            type: json
+          aggregate_functions: {}
+          comparison_operators: {}
+        Label:
+          representation:
+            type: string
+          aggregate_functions: {}
+          comparison_operators:
+            _eq:
+              type: equal
+            _in:
+              type: custom
+              argument_type:
+                type: named
+                name: JSON
+            _neq:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+            _nin:
+              type: custom
+              argument_type:
+                type: array
+                element_type:
+                  type: named
+                  name: Label
+            _nregex:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+            _regex:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+        LabelSet:
+          representation:
+            type: json
+          aggregate_functions: {}
+          comparison_operators: {}
+        LogLine:
+          representation:
+            type: string
+          aggregate_functions: {}
+          comparison_operators:
+            _ilike:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+            _ip:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+            _like:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+            _nilike:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+            _nip:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+            _nlike:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+            _nregex:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+            _regex:
+              type: custom
+              argument_type:
+                type: named
+                name: LogLine
+        NginxLogAggregateLabel:
+          representation:
+            type: enum
+            one_of:
+              - body_bytes_sent
+              - container_name
+              - http_referer
+              - http_user_agent
+              - remote_addr
+              - remote_user
+              - request
+              - request_length
+              - request_time
+              - status
+              - time_local
+          aggregate_functions: {}
+          comparison_operators: {}
+        Ordering:
+          representation:
+            type: enum
+            one_of:
+              - asc
+              - desc
+          aggregate_functions: {}
+          comparison_operators: {}
+        QueryDirection:
+          representation:
+            type: enum
+            one_of:
+              - forward
+              - backward
+          aggregate_functions: {}
+          comparison_operators: {}
+        String:
+          representation:
+            type: string
+          aggregate_functions: {}
+          comparison_operators:
+            _eq:
+              type: equal
+            _in:
+              type: custom
+              argument_type:
+                type: named
+                name: JSON
+            _ip:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+            _neq:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+            _nin:
+              type: custom
+              argument_type:
+                type: array
+                element_type:
+                  type: named
+                  name: Label
+            _nip:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+            _nregex:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+            _regex:
+              type: custom
+              argument_type:
+                type: named
+                name: Label
+        Timestamp:
+          representation:
+            type: timestamp
+          aggregate_functions: {}
+          comparison_operators:
+            _eq:
+              type: equal
+            _gt:
+              type: custom
+              argument_type:
+                type: named
+                name: Timestamp
+            _gte:
+              type: custom
+              argument_type:
+                type: named
+                name: Timestamp
+            _lt:
+              type: custom
+              argument_type:
+                type: named
+                name: Timestamp
+            _lte:
+              type: custom
+              argument_type:
+                type: named
+                name: Timestamp
+            _since:
+              type: custom
+              argument_type:
+                type: named
+                name: Duration
+        TimestampTZ:
+          representation:
+            type: timestamptz
+          aggregate_functions: {}
+          comparison_operators: {}
+      object_types:
+        HasuraLog:
+          fields:
+            container_name:
+              type:
+                type: named
+                name: Label
+            level:
+              type:
+                type: named
+                name: String
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            log_lines:
+              description: List of log lines grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: StreamValue
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            timestamp:
+              description: The timestamp of the current log line or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+            type:
+              type:
+                type: named
+                name: String
+        HasuraLogAggregate:
+          fields:
+            container_name:
+              type:
+                type: named
+                name: Label
+            level:
+              type:
+                type: named
+                name: String
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            metric_value:
+              description: Value of the instant query or the last value of a range query
+              type:
+                type: named
+                name: Decimal
+            metric_values:
+              description: List of metric values grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: MetricValue
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            timestamp:
+              description: An instant timestamp or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+            type:
+              type:
+                type: named
+                name: String
+        HasuraLogAggregateAggregation:
+          fields:
+            absent_over_time:
+              description: Returns an empty vector if the range vector passed to it has any elements (floats or native histograms) and a 1-element vector with the value 1 if the range vector passed to it has no elements
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            avg:
+              description: Calculate the average over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationGroupBy
+            avg_over_time:
+              description: The average of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            bottomk:
+              description: Smallest k elements by sample value
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationKInput
+            bytes_over_time:
+              description: Counts the amount of bytes used by each log stream for a given range.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            bytes_rate:
+              description: Calculates the number of bytes per second for each stream.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            count:
+              description: Count number of elements in the vector
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationGroupBy
+            count_over_time:
+              description: The count of all values in the specified interval
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            first_over_time:
+              description: The first of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            last_over_time:
+              description: The last of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            max:
+              description: Select maximum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationGroupBy
+            max_over_time:
+              description: The maximum of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            min:
+              description: Select minimum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationGroupBy
+            min_over_time:
+              description: The minimum of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            quantile_over_time:
+              description: The φ-quantile (0 ≤ φ ≤ 1) of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationQuantileOverTime
+            rate:
+              description: Calculates the number of entries per second.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            rate_counter:
+              description: Calculates the number of entries per second.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            sort:
+              description: Returns vector elements sorted by their sample values. Native histograms are sorted by their sum of observations
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Ordering
+            stddev:
+              description: Calculate the population standard deviation over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationGroupBy
+            stddev_over_time:
+              description: The population standard deviation of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            stdvar:
+              description: Calculate the population standard variance over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationGroupBy
+            stdvar_over_time:
+              description: The population standard variance of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            sum:
+              description: Calculate sum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationGroupBy
+            sum_over_time:
+              description: The sum of all values in the specified interval
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationRangeUnwrap
+            topk:
+              description: Largest k elements by sample value
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HasuraLogAggregateAggregationKInput
+        HasuraLogAggregateAggregationGroupBy:
+          fields:
+            by:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HasuraLogAggregateLabel
+            without:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HasuraLogAggregateLabel
+        HasuraLogAggregateAggregationKInput:
+          fields:
+            by:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HasuraLogAggregateLabel
+            k:
+              type:
+                type: named
+                name: Int64
+            without:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HasuraLogAggregateLabel
+        HasuraLogAggregateAggregationQuantileOverTime:
+          fields:
+            conversion_function:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: ConversionFunction
+            quantile:
+              type:
+                type: named
+                name: Float64
+            range:
+              type:
+                type: named
+                name: Duration
+            unwrap:
+              type:
+                type: named
+                name: HasuraLogAggregateLabel
+        HasuraLogAggregateAggregationRangeUnwrap:
+          fields:
+            conversion_function:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: ConversionFunction
+            range:
+              type:
+                type: named
+                name: Duration
+            unwrap:
+              type:
+                type: named
+                name: HasuraLogAggregateLabel
+        HttpLog:
+          fields:
+            container_name:
+              type:
+                type: named
+                name: Label
+            http_status:
+              type:
+                type: named
+                name: String
+            latency:
+              type:
+                type: named
+                name: String
+            level:
+              type:
+                type: named
+                name: String
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            log_lines:
+              description: List of log lines grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: StreamValue
+            operation_name:
+              type:
+                type: named
+                name: String
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            request_url:
+              type:
+                type: named
+                name: String
+            timestamp:
+              description: The timestamp of the current log line or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+            type:
+              type:
+                type: named
+                name: String
+        HttpLogAggregate:
+          fields:
+            container_name:
+              type:
+                type: named
+                name: Label
+            http_status:
+              type:
+                type: named
+                name: String
+            latency:
+              type:
+                type: named
+                name: String
+            level:
+              type:
+                type: named
+                name: String
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            metric_value:
+              description: Value of the instant query or the last value of a range query
+              type:
+                type: named
+                name: Decimal
+            metric_values:
+              description: List of metric values grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: MetricValue
+            operation_name:
+              type:
+                type: named
+                name: String
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            request_url:
+              type:
+                type: named
+                name: String
+            timestamp:
+              description: An instant timestamp or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+            type:
+              type:
+                type: named
+                name: String
+        HttpLogAggregateAggregation:
+          fields:
+            absent_over_time:
+              description: Returns an empty vector if the range vector passed to it has any elements (floats or native histograms) and a 1-element vector with the value 1 if the range vector passed to it has no elements
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            avg:
+              description: Calculate the average over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationGroupBy
+            avg_over_time:
+              description: The average of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            bottomk:
+              description: Smallest k elements by sample value
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationKInput
+            bytes_over_time:
+              description: Counts the amount of bytes used by each log stream for a given range.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            bytes_rate:
+              description: Calculates the number of bytes per second for each stream.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            count:
+              description: Count number of elements in the vector
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationGroupBy
+            count_over_time:
+              description: The count of all values in the specified interval
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            first_over_time:
+              description: The first of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            last_over_time:
+              description: The last of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            max:
+              description: Select maximum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationGroupBy
+            max_over_time:
+              description: The maximum of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            min:
+              description: Select minimum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationGroupBy
+            min_over_time:
+              description: The minimum of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            quantile_over_time:
+              description: The φ-quantile (0 ≤ φ ≤ 1) of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationQuantileOverTime
+            rate:
+              description: Calculates the number of entries per second.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            rate_counter:
+              description: Calculates the number of entries per second.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            sort:
+              description: Returns vector elements sorted by their sample values. Native histograms are sorted by their sum of observations
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Ordering
+            stddev:
+              description: Calculate the population standard deviation over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationGroupBy
+            stddev_over_time:
+              description: The population standard deviation of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            stdvar:
+              description: Calculate the population standard variance over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationGroupBy
+            stdvar_over_time:
+              description: The population standard variance of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            sum:
+              description: Calculate sum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationGroupBy
+            sum_over_time:
+              description: The sum of all values in the specified interval
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationRangeUnwrap
+            topk:
+              description: Largest k elements by sample value
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: HttpLogAggregateAggregationKInput
+        HttpLogAggregateAggregationGroupBy:
+          fields:
+            by:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HttpLogAggregateLabel
+            without:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HttpLogAggregateLabel
+        HttpLogAggregateAggregationKInput:
+          fields:
+            by:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HttpLogAggregateLabel
+            k:
+              type:
+                type: named
+                name: Int64
+            without:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: HttpLogAggregateLabel
+        HttpLogAggregateAggregationQuantileOverTime:
+          fields:
+            conversion_function:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: ConversionFunction
+            quantile:
+              type:
+                type: named
+                name: Float64
+            range:
+              type:
+                type: named
+                name: Duration
+            unwrap:
+              type:
+                type: named
+                name: HttpLogAggregateLabel
+        HttpLogAggregateAggregationRangeUnwrap:
+          fields:
+            conversion_function:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: ConversionFunction
+            range:
+              type:
+                type: named
+                name: Duration
+            unwrap:
+              type:
+                type: named
+                name: HttpLogAggregateLabel
+        LabelsParams:
+          description: represent parameters of the labels request
+          fields:
+            end:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+            query:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            since:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            start:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+        LogDeletionRequest:
+          description: the log deletion request item
+          fields:
+            created_at:
+              type:
+                type: named
+                name: Float64
+            end_time:
+              type:
+                type: named
+                name: Float64
+            query:
+              type:
+                type: named
+                name: String
+            request_id:
+              type:
+                type: named
+                name: String
+            start_time:
+              type:
+                type: named
+                name: Float64
+            status:
+              type:
+                type: named
+                name: String
+        LogLineInput:
+          description: represents a log line item
+          fields:
+            line:
+              type:
+                type: named
+                name: String
+            structured_metadata:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: JSON
+            timestamp:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+        MatrixValue:
+          description: holds a single timestamp and a metric value
+          fields:
+            time:
+              type:
+                type: named
+                name: TimestampTZ
+            value:
+              type:
+                type: named
+                name: Float64
+        MatrixValues:
+          description: holds a label key value pairs for the metric and a list of values
+          fields:
+            metric:
+              type:
+                type: named
+                name: JSON
+            values:
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: MatrixValue
+        MetricItem:
+          description: A metric item of the query result
+          fields:
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            metric_value:
+              description: Value of the instant query or the last value of a range query
+              type:
+                type: named
+                name: Decimal
+            metric_values:
+              description: List of metric values grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: MetricValue
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            timestamp:
+              description: An instant timestamp or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+        MetricValue:
+          description: A metric value of the query result
+          fields:
+            timestamp:
+              description: The timestamp when the value is calculated
+              type:
+                type: named
+                name: Timestamp
+            value:
+              description: The metric value
+              type:
+                type: named
+                name: Decimal
+        NginxLog:
+          fields:
+            body_bytes_sent:
+              type:
+                type: named
+                name: String
+            container_name:
+              type:
+                type: named
+                name: Label
+            http_referer:
+              type:
+                type: named
+                name: String
+            http_user_agent:
+              type:
+                type: named
+                name: String
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            log_lines:
+              description: List of log lines grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: StreamValue
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            remote_addr:
+              type:
+                type: named
+                name: String
+            remote_user:
+              type:
+                type: named
+                name: String
+            request:
+              type:
+                type: named
+                name: String
+            request_length:
+              type:
+                type: named
+                name: String
+            request_time:
+              type:
+                type: named
+                name: String
+            status:
+              type:
+                type: named
+                name: String
+            time_local:
+              type:
+                type: named
+                name: String
+            timestamp:
+              description: The timestamp of the current log line or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+        NginxLogAggregate:
+          fields:
+            body_bytes_sent:
+              type:
+                type: named
+                name: String
+            container_name:
+              type:
+                type: named
+                name: Label
+            http_referer:
+              type:
+                type: named
+                name: String
+            http_user_agent:
+              type:
+                type: named
+                name: String
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            metric_value:
+              description: Value of the instant query or the last value of a range query
+              type:
+                type: named
+                name: Decimal
+            metric_values:
+              description: List of metric values grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: MetricValue
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            remote_addr:
+              type:
+                type: named
+                name: String
+            remote_user:
+              type:
+                type: named
+                name: String
+            request:
+              type:
+                type: named
+                name: String
+            request_length:
+              type:
+                type: named
+                name: String
+            request_time:
+              type:
+                type: named
+                name: String
+            status:
+              type:
+                type: named
+                name: String
+            time_local:
+              type:
+                type: named
+                name: String
+            timestamp:
+              description: An instant timestamp or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+        NginxLogAggregateAggregation:
+          fields:
+            absent_over_time:
+              description: Returns an empty vector if the range vector passed to it has any elements (floats or native histograms) and a 1-element vector with the value 1 if the range vector passed to it has no elements
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            avg:
+              description: Calculate the average over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationGroupBy
+            avg_over_time:
+              description: The average of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            bottomk:
+              description: Smallest k elements by sample value
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationKInput
+            bytes_over_time:
+              description: Counts the amount of bytes used by each log stream for a given range.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            bytes_rate:
+              description: Calculates the number of bytes per second for each stream.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            count:
+              description: Count number of elements in the vector
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationGroupBy
+            count_over_time:
+              description: The count of all values in the specified interval
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            first_over_time:
+              description: The first of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            last_over_time:
+              description: The last of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            max:
+              description: Select maximum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationGroupBy
+            max_over_time:
+              description: The maximum of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            min:
+              description: Select minimum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationGroupBy
+            min_over_time:
+              description: The minimum of all values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            quantile_over_time:
+              description: The φ-quantile (0 ≤ φ ≤ 1) of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationQuantileOverTime
+            rate:
+              description: Calculates the number of entries per second.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            rate_counter:
+              description: Calculates the number of entries per second.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            sort:
+              description: Returns vector elements sorted by their sample values. Native histograms are sorted by their sum of observations
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Ordering
+            stddev:
+              description: Calculate the population standard deviation over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationGroupBy
+            stddev_over_time:
+              description: The population standard deviation of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            stdvar:
+              description: Calculate the population standard variance over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationGroupBy
+            stdvar_over_time:
+              description: The population standard variance of the values in the specified interval.
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            sum:
+              description: Calculate sum over labels
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationGroupBy
+            sum_over_time:
+              description: The sum of all values in the specified interval
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationRangeUnwrap
+            topk:
+              description: Largest k elements by sample value
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: NginxLogAggregateAggregationKInput
+        NginxLogAggregateAggregationGroupBy:
+          fields:
+            by:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: NginxLogAggregateLabel
+            without:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: NginxLogAggregateLabel
+        NginxLogAggregateAggregationKInput:
+          fields:
+            by:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: NginxLogAggregateLabel
+            k:
+              type:
+                type: named
+                name: Int64
+            without:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: NginxLogAggregateLabel
+        NginxLogAggregateAggregationQuantileOverTime:
+          fields:
+            conversion_function:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: ConversionFunction
+            quantile:
+              type:
+                type: named
+                name: Float64
+            range:
+              type:
+                type: named
+                name: Duration
+            unwrap:
+              type:
+                type: named
+                name: NginxLogAggregateLabel
+        NginxLogAggregateAggregationRangeUnwrap:
+          fields:
+            conversion_function:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: ConversionFunction
+            range:
+              type:
+                type: named
+                name: Duration
+            unwrap:
+              type:
+                type: named
+                name: NginxLogAggregateLabel
+        QueryData:
+          description: holds the result type and a metric vector value of the instant query response
+          fields:
+            encodingFlags:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: String
+            resultType:
+              type:
+                type: named
+                name: String
+            vector:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: VectorValue
+        QueryRangeData:
+          description: holds the result type and a list of stream or metric values of the query range response
+          fields:
+            encodingFlags:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: String
+            matrix:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: MatrixValues
+            resultType:
+              type:
+                type: named
+                name: String
+            stream:
+              type:
+                type: nullable
+                underlying_type:
+                  type: array
+                  element_type:
+                    type: named
+                    name: StreamValues
+        StreamInput:
+          description: represents a stream input object.
+          fields:
+            stream:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: JSON
+            values:
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: LogLineInput
+        StreamItem:
+          description: A log stream item of the query result
+          fields:
+            log_line:
+              description: A log line if the flat values setting is enabled
+              type:
+                type: named
+                name: LogLine
+            log_lines:
+              description: List of log lines grouped by unique labels
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: StreamValue
+            original_labels:
+              description: Labels of the metric
+              type:
+                type: named
+                name: LabelSet
+            timestamp:
+              description: The timestamp of the current log line or the last timestamp of a range query result
+              type:
+                type: named
+                name: Timestamp
+        StreamValue:
+          description: A log stream value of the query result
+          fields:
+            timestamp:
+              description: Timestamp of the log line
+              type:
+                type: named
+                name: Timestamp
+            value:
+              description: The log line content
+              type:
+                type: named
+                name: LogLine
+        StreamValues:
+          description: holds a label key value pairs for the log stream and a list of values
+          fields:
+            stream:
+              type:
+                type: named
+                name: JSON
+            values:
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: StreamValue
+        VectorValue:
+          description: holds a label key value pairs for the metric and single timestamp and value
+          fields:
+            metric:
+              type:
+                type: named
+                name: JSON
+            time:
+              type:
+                type: named
+                name: TimestampTZ
+            value:
+              type:
+                type: named
+                name: Float64
+      collections:
+        - name: hasura_log
+          arguments:
+            flat:
+              description: Flatten grouped values out the root array
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Boolean
+            interval:
+              description: Only return entries at (or greater than) the specified interval, can be a duration format or float number of seconds
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+          type: HasuraLog
+          uniqueness_constraints: {}
+          foreign_keys: {}
+        - name: hasura_log_aggregate
+          arguments:
+            aggregations:
+              description: Aggregation operators for hasura_log_aggregate
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: HasuraLogAggregateAggregation
+            flat:
+              description: Flatten grouped values out the root array
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Boolean
+            offset:
+              description: The offset modifier allows changing the time offset for individual instant and range vectors in a query
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            step:
+              description: Query resolution step width in duration format or float number of seconds
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+          type: HasuraLogAggregate
+          uniqueness_constraints: {}
+          foreign_keys: {}
+        - name: http_log
+          arguments:
+            flat:
+              description: Flatten grouped values out the root array
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Boolean
+            interval:
+              description: Only return entries at (or greater than) the specified interval, can be a duration format or float number of seconds
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+          type: HttpLog
+          uniqueness_constraints: {}
+          foreign_keys: {}
+        - name: http_log_aggregate
+          arguments:
+            aggregations:
+              description: Aggregation operators for http_log_aggregate
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: HttpLogAggregateAggregation
+            flat:
+              description: Flatten grouped values out the root array
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Boolean
+            offset:
+              description: The offset modifier allows changing the time offset for individual instant and range vectors in a query
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            step:
+              description: Query resolution step width in duration format or float number of seconds
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+          type: HttpLogAggregate
+          uniqueness_constraints: {}
+          foreign_keys: {}
+        - name: nginx_log
+          arguments:
+            flat:
+              description: Flatten grouped values out the root array
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Boolean
+            interval:
+              description: Only return entries at (or greater than) the specified interval, can be a duration format or float number of seconds
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+          type: NginxLog
+          uniqueness_constraints: {}
+          foreign_keys: {}
+        - name: nginx_log_aggregate
+          arguments:
+            aggregations:
+              description: Aggregation operators for nginx_log_aggregate
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: NginxLogAggregateAggregation
+            flat:
+              description: Flatten grouped values out the root array
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Boolean
+            offset:
+              description: The offset modifier allows changing the time offset for individual instant and range vectors in a query
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            step:
+              description: Query resolution step width in duration format or float number of seconds
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+          type: NginxLogAggregate
+          uniqueness_constraints: {}
+          foreign_keys: {}
+      functions:
+        - name: loki_label_values
+          description: retrieve the list of known values for a given label within a given time span.
+          arguments:
+            end:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+            name:
+              type:
+                type: named
+                name: String
+            query:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            since:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            start:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+          result_type:
+            type: array
+            element_type:
+              type: named
+              name: String
+        - name: loki_labels
+          description: return the list of known labels within a given time span.
+          arguments:
+            end:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+            query:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            since:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            start:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+          result_type:
+            type: array
+            element_type:
+              type: named
+              name: String
+        - name: loki_log_deletion_requests
+          description: list the existing delete requests for the authenticated tenant
+          arguments: {}
+          result_type:
+            type: array
+            element_type:
+              type: named
+              name: LogDeletionRequest
+        - name: loki_query
+          description: allows for doing [queries against a single point in time]
+          arguments:
+            direction:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: QueryDirection
+            limit:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Int32
+            query:
+              type:
+                type: named
+                name: String
+            time:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+          result_type:
+            type: named
+            name: QueryData
+        - name: loki_query_range
+          arguments:
+            direction:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: QueryDirection
+            end:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+            interval:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            limit:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Int32
+            query:
+              type:
+                type: named
+                name: String
+            since:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            start:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+            step:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+          result_type:
+            type: named
+            name: QueryRangeData
+      procedures:
+        - name: loki_cancel_log_deletion_request
+          description: cancels a new log deletion request for the authenticated tenant
+          arguments:
+            force:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Boolean
+            request_id:
+              type:
+                type: named
+                name: String
+          result_type:
+            type: named
+            name: Boolean
+        - name: loki_create_log_deletion_request
+          description: creates a new log deletion request for the authenticated tenant
+          arguments:
+            end:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+            max_interval:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Duration
+            query:
+              type:
+                type: named
+                name: String
+            start:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: TimestampTZ
+          result_type:
+            type: named
+            name: Boolean
+        - name: loki_push_log_lines
+          description: pushes log lines to Loki
+          arguments:
+            streams:
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: StreamInput
+          result_type:
+            type: named
+            name: Boolean
+    capabilities:
+      version: 0.1.6
+      capabilities:
+        query:
+          variables: {}
+          explain: {}
+          nested_fields: {}
+          exists: {}
+        mutation: {}

@@ -1,0 +1,2 @@
+FROM ghcr.io/hasura/ndc-prometheus:v0.3.2
+COPY ./ /etc/connector

@@ -1,0 +1,167 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MatrixValue
+  description: holds a single timestamp and a metric value
+  fields:
+    - name: time
+      type: TimestampTZ!
+    - name: value
+      type: Float64!
+  graphql:
+    typeName: MatrixValue
+    inputTypeName: MatrixValue_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: MatrixValue
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MatrixValue
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - time
+          - value
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MatrixValues
+  description: holds a label key value pairs for the metric and a list of values
+  fields:
+    - name: metric
+      type: JSON!
+    - name: values
+      type: "[MatrixValue!]!"
+  graphql:
+    typeName: MatrixValues
+    inputTypeName: MatrixValues_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: MatrixValues
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MatrixValues
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - metric
+          - values
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: StreamValues
+  description: holds a label key value pairs for the log stream and a list of values
+  fields:
+    - name: stream
+      type: JSON!
+    - name: values
+      type: "[StreamValue!]!"
+  graphql:
+    typeName: StreamValues
+    inputTypeName: StreamValues_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: StreamValues
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: StreamValues
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - stream
+          - values
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: QueryRangeData
+  description: holds the result type and a list of stream or metric values of the
+    query range response
+  fields:
+    - name: encodingFlags
+      type: "[String!]"
+    - name: matrix
+      type: "[MatrixValues!]"
+    - name: resultType
+      type: String!
+    - name: stream
+      type: "[StreamValues!]"
+  graphql:
+    typeName: QueryRangeData
+    inputTypeName: QueryRangeData_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: myloki
+      dataConnectorObjectType: QueryRangeData
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: QueryRangeData
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - encodingFlags
+          - matrix
+          - resultType
+          - stream
+
+---
+kind: Command
+version: v1
+definition:
+  name: loki_query_range
+  outputType: QueryRangeData!
+  arguments:
+    - name: direction
+      type: QueryDirection
+    - name: end
+      type: TimestampTZ
+    - name: interval
+      type: Duration
+    - name: limit
+      type: Int32
+    - name: query
+      type: String!
+    - name: since
+      type: Duration
+    - name: start
+      type: TimestampTZ
+    - name: step
+      type: Duration
+  source:
+    dataConnectorName: myloki
+    dataConnectorCommand:
+      function: loki_query_range
+  graphql:
+    rootFieldName: loki_query_range
+    rootFieldKind: Query
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: loki_query_range
+  permissions:
+    - role: admin
+      allowExecution: true
+
