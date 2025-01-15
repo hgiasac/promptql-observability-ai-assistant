@@ -1,0 +1,21 @@
+kind: Subgraph
+version: v2
+definition:
+  name: mypg
+  generator:
+    rootPath: .
+    namingConvention: none
+    graphqlRootFieldPrefix: mypg_
+    graphqlTypeNamePrefix: mypg_
+  includePaths:
+    - metadata
+  envMapping:
+    MYPG_MYPOSTGRES_AUTHORIZATION_HEADER:
+      fromEnv: MYPG_MYPOSTGRES_AUTHORIZATION_HEADER
+    MYPG_MYPOSTGRES_READ_URL:
+      fromEnv: MYPG_MYPOSTGRES_READ_URL
+    MYPG_MYPOSTGRES_WRITE_URL:
+      fromEnv: MYPG_MYPOSTGRES_WRITE_URL
+  connectors:
+    - path: connector/mypostgres/connector.yaml
+      connectorLinkName: mypostgres

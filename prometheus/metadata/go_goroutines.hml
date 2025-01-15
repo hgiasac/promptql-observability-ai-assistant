@@ -567,6 +567,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_goroutines
+      subscription:
+        rootField: prom_go_goroutines
     selectUniques: []
     argumentsInputType: prom_go_goroutines_arguments
     orderByExpressionType: prom_go_goroutines_order_by
@@ -581,4 +583,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

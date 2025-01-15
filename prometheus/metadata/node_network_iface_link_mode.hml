@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_network_iface_link_mode
+      subscription:
+        rootField: prom_node_network_iface_link_mode
     selectUniques: []
     argumentsInputType: prom_node_network_iface_link_mode_arguments
     orderByExpressionType: prom_node_network_iface_link_mode_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

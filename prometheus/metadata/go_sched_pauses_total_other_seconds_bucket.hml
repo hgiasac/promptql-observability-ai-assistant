@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_sched_pauses_total_other_seconds_bucket
+      subscription:
+        rootField: prom_go_sched_pauses_total_other_seconds_bucket
     selectUniques: []
     argumentsInputType: prom_go_sched_pauses_total_other_seconds_bucket_arguments
     orderByExpressionType: prom_go_sched_pauses_total_other_seconds_bucket_order_by
@@ -594,4 +596,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

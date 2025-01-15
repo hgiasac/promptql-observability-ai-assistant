@@ -1,0 +1,298 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_invocation_logs
+  description: Update the 'deleted_event_invocation_logs' column in the
+    'hdb_catalog_hdb_event_log_cleanups' collection
+  fields:
+    - name: _set
+      type: int4
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_invocation_logs
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_invocation_logs_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_invocation_logs
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_invocation_logs
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_logs
+  description: Update the 'deleted_event_logs' column in the
+    'hdb_catalog_hdb_event_log_cleanups' collection
+  fields:
+    - name: _set
+      type: int4
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_logs
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_logs_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_logs
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_logs
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_event_log_cleanups_id
+  description: Update the 'id' column in the 'hdb_catalog_hdb_event_log_cleanups' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_id
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_event_log_cleanups_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_event_log_cleanups_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_event_log_cleanups_scheduled_at
+  description: Update the 'scheduled_at' column in the
+    'hdb_catalog_hdb_event_log_cleanups' collection
+  fields:
+    - name: _set
+      type: timestamp!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_scheduled_at
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_scheduled_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_event_log_cleanups_scheduled_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_event_log_cleanups_scheduled_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_event_log_cleanups_status
+  description: Update the 'status' column in the
+    'hdb_catalog_hdb_event_log_cleanups' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_status
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_status_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_event_log_cleanups_status
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_event_log_cleanups_status
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_event_log_cleanups_trigger_name
+  description: Update the 'trigger_name' column in the
+    'hdb_catalog_hdb_event_log_cleanups' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_trigger_name
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_event_log_cleanups_trigger_name_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_event_log_cleanups_trigger_name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_event_log_cleanups_trigger_name
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_event_log_cleanups_by_id_update_columns
+  description: Update the columns of the 'hdb_catalog_hdb_event_log_cleanups' collection
+  fields:
+    - name: deleted_event_invocation_logs
+      type: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_invocation_logs
+      description: Update the 'deleted_event_invocation_logs' column in the
+        'hdb_catalog_hdb_event_log_cleanups' collection.
+    - name: deleted_event_logs
+      type: update_column_hdb_catalog_hdb_event_log_cleanups_deleted_event_logs
+      description: Update the 'deleted_event_logs' column in the
+        'hdb_catalog_hdb_event_log_cleanups' collection.
+    - name: id
+      type: update_column_hdb_catalog_hdb_event_log_cleanups_id
+      description: Update the 'id' column in the 'hdb_catalog_hdb_event_log_cleanups'
+        collection.
+    - name: scheduled_at
+      type: update_column_hdb_catalog_hdb_event_log_cleanups_scheduled_at
+      description: Update the 'scheduled_at' column in the
+        'hdb_catalog_hdb_event_log_cleanups' collection.
+    - name: status
+      type: update_column_hdb_catalog_hdb_event_log_cleanups_status
+      description: Update the 'status' column in the
+        'hdb_catalog_hdb_event_log_cleanups' collection.
+    - name: trigger_name
+      type: update_column_hdb_catalog_hdb_event_log_cleanups_trigger_name
+      description: Update the 'trigger_name' column in the
+        'hdb_catalog_hdb_event_log_cleanups' collection.
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_event_log_cleanups_by_id_update_columns
+    inputTypeName: mypg_update_hdb_catalog_hdb_event_log_cleanups_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_event_log_cleanups_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_event_log_cleanups_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - deleted_event_invocation_logs
+          - deleted_event_logs
+          - id
+          - scheduled_at
+          - status
+          - trigger_name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_event_log_cleanups_by_id_response
+  description: Responses from the
+    'update_hdb_catalog_hdb_event_log_cleanups_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_event_log_cleanups!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_event_log_cleanups_by_id_response
+    inputTypeName: mypg_update_hdb_catalog_hdb_event_log_cleanups_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_event_log_cleanups_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_event_log_cleanups_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_event_log_cleanups_by_id
+  outputType: update_hdb_catalog_hdb_event_log_cleanups_by_id_response!
+  arguments:
+    - name: key_id
+      type: text!
+    - name: post_check
+      type: hdb_catalog_hdb_event_log_cleanups_bool_exp
+      description: Update permission post-condition predicate over the
+        'hdb_catalog_hdb_event_log_cleanups' collection
+    - name: pre_check
+      type: hdb_catalog_hdb_event_log_cleanups_bool_exp
+      description: Update permission pre-condition predicate over the
+        'hdb_catalog_hdb_event_log_cleanups' collection
+    - name: update_columns
+      type: update_hdb_catalog_hdb_event_log_cleanups_by_id_update_columns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hdb_catalog_hdb_event_log_cleanups_by_id
+  graphql:
+    rootFieldName: mypg_update_hdb_catalog_hdb_event_log_cleanups_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'hdb_catalog_hdb_event_log_cleanups'
+    collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_hdb_catalog_hdb_event_log_cleanups_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

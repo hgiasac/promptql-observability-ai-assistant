@@ -584,6 +584,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_ndc_loki_query_total_time_count
+      subscription:
+        rootField: prom_ndc_loki_query_total_time_count
     selectUniques: []
     argumentsInputType: prom_ndc_loki_query_total_time_count_arguments
     orderByExpressionType: prom_ndc_loki_query_total_time_count_order_by
@@ -598,4 +600,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

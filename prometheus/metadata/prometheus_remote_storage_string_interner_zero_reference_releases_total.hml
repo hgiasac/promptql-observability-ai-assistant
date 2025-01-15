@@ -569,6 +569,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_remote_storage_string_interner_zero_reference_releases_total
+      subscription:
+        rootField: prom_prometheus_remote_storage_string_interner_zero_reference_releases_total
     selectUniques: []
     argumentsInputType: prom_prometheus_remote_storage_string_interner_zero_reference_releases_total_arguments
     orderByExpressionType: prom_prometheus_remote_storage_string_interner_zero_reference_releases_total_order_by
@@ -584,4 +586,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

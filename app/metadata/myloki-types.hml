@@ -732,3 +732,23 @@ definition:
   graphql:
     comparisonExpressionTypeName: Int32_comparison_exp
 
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: Boolean
+  representation: Boolean
+  graphql:
+    comparisonExpressionTypeName: Boolean_comparison_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myloki
+  dataConnectorScalarType: String
+  representation: String
+  graphql:
+    comparisonExpressionTypeName: String_comparison_exp
+

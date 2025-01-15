@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_sched_pauses_total_gc_seconds_count
+      subscription:
+        rootField: prom_go_sched_pauses_total_gc_seconds_count
     selectUniques: []
     argumentsInputType: prom_go_sched_pauses_total_gc_seconds_count_arguments
     orderByExpressionType: prom_go_sched_pauses_total_gc_seconds_count_order_by
@@ -587,4 +589,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

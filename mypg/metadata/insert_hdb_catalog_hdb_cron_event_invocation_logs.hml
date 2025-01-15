@@ -1,0 +1,105 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_cron_event_invocation_logs_object
+  fields:
+    - name: created_at
+      type: timestamptz
+    - name: event_id
+      type: text
+    - name: id
+      type: text
+    - name: request
+      type: json
+    - name: response
+      type: json
+    - name: status
+      type: int4
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_cron_event_invocation_logs_object
+    inputTypeName: mypg_insert_hdb_catalog_hdb_cron_event_invocation_logs_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_cron_event_invocation_logs_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_cron_event_invocation_logs_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - event_id
+          - id
+          - request
+          - response
+          - status
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_cron_event_invocation_logs_response
+  description: Responses from the
+    'insert_hdb_catalog_hdb_cron_event_invocation_logs' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_cron_event_invocation_logs!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_cron_event_invocation_logs_response
+    inputTypeName: mypg_insert_hdb_catalog_hdb_cron_event_invocation_logs_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_cron_event_invocation_logs_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_cron_event_invocation_logs_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_cron_event_invocation_logs
+  outputType: insert_hdb_catalog_hdb_cron_event_invocation_logs_response!
+  arguments:
+    - name: objects
+      type: "[insert_hdb_catalog_hdb_cron_event_invocation_logs_object!]!"
+    - name: post_check
+      type: hdb_catalog_hdb_cron_event_invocation_logs_bool_exp
+      description: Insert permission predicate over the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_hdb_catalog_hdb_cron_event_invocation_logs
+  graphql:
+    rootFieldName: mypg_insert_hdb_catalog_hdb_cron_event_invocation_logs
+    rootFieldKind: Mutation
+  description: Insert into the hdb_catalog_hdb_cron_event_invocation_logs table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_hdb_catalog_hdb_cron_event_invocation_logs
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -599,6 +599,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_ndc_loki_query_total
+      subscription:
+        rootField: prom_ndc_loki_query_total
     selectUniques: []
     argumentsInputType: prom_ndc_loki_query_total_arguments
     orderByExpressionType: prom_ndc_loki_query_total_order_by
@@ -613,4 +615,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

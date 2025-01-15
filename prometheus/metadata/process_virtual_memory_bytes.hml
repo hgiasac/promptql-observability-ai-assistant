@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_process_virtual_memory_bytes
+      subscription:
+        rootField: prom_process_virtual_memory_bytes
     selectUniques: []
     argumentsInputType: prom_process_virtual_memory_bytes_arguments
     orderByExpressionType: prom_process_virtual_memory_bytes_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

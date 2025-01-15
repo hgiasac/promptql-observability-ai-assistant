@@ -584,6 +584,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_hwmon_temp_min_alarm_celsius
+      subscription:
+        rootField: prom_node_hwmon_temp_min_alarm_celsius
     selectUniques: []
     argumentsInputType: prom_node_hwmon_temp_min_alarm_celsius_arguments
     orderByExpressionType: prom_node_hwmon_temp_min_alarm_celsius_order_by
@@ -598,4 +600,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

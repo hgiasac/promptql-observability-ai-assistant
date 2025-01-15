@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_net_conntrack_dialer_conn_attempted_total
+      subscription:
+        rootField: prom_net_conntrack_dialer_conn_attempted_total
     selectUniques: []
     argumentsInputType: prom_net_conntrack_dialer_conn_attempted_total_arguments
     orderByExpressionType: prom_net_conntrack_dialer_conn_attempted_total_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

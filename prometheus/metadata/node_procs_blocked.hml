@@ -567,6 +567,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_procs_blocked
+      subscription:
+        rootField: prom_node_procs_blocked
     selectUniques: []
     argumentsInputType: prom_node_procs_blocked_arguments
     orderByExpressionType: prom_node_procs_blocked_order_by
@@ -581,4 +583,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

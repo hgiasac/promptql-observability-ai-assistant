@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_target_scrapes_sample_duplicate_timestamp_total
+      subscription:
+        rootField: prom_prometheus_target_scrapes_sample_duplicate_timestamp_total
     selectUniques: []
     argumentsInputType: prom_prometheus_target_scrapes_sample_duplicate_timestamp_total_arguments
     orderByExpressionType: prom_prometheus_target_scrapes_sample_duplicate_timestamp_total_order_by
@@ -583,4 +585,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

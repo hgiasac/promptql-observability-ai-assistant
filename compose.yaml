@@ -2,6 +2,7 @@ include:
   - path: compose.services.yaml
   - path: app/connector/myloki/compose.yaml
   - path: prometheus/connector/myprometheus/compose.yaml
+  - path: mypg/connector/mypostgres/compose.yaml
 services:
   engine:
     build:
@@ -21,21 +22,19 @@ services:
       io.hasura.ddn.service-name: engine
     ports:
       - 3280:3000
-
   otel-collector:
     command:
       - --config=/etc/otel-collector-config.yaml
     environment:
       HASURA_DDN_PAT: ${HASURA_DDN_PAT:-test}
-    image: otel/opentelemetry-collector:0.104.0
+    extra_hosts:
+      - local.hasura.dev:host-gateway
+    image: otel/opentelemetry-collector-contrib:0.104.0
     ports:
       - 4317:4317
       - 4318:4318
-    extra_hosts:
-      - local.hasura.dev:host-gateway
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
-
   promptql-playground:
     environment:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}

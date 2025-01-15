@@ -1,0 +1,429 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_action_name
+  description: Update the 'action_name' column in the 'hdb_catalog_hdb_action_log'
+    collection
+  fields:
+    - name: _set
+      type: text
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_action_name
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_action_name_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_action_name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_action_name
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_created_at
+  description: Update the 'created_at' column in the 'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_created_at
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_created_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_errors
+  description: Update the 'errors' column in the 'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: jsonb
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_errors
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_errors_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_errors
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_errors
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_id
+  description: Update the 'id' column in the 'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_id
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_input_payload
+  description: Update the 'input_payload' column in the
+    'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: jsonb!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_input_payload
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_input_payload_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_input_payload
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_input_payload
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_request_headers
+  description: Update the 'request_headers' column in the
+    'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: jsonb!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_request_headers
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_request_headers_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_request_headers
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_request_headers
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_response_payload
+  description: Update the 'response_payload' column in the
+    'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: jsonb
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_response_payload
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_response_payload_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_response_payload
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_response_payload
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_response_received_at
+  description: Update the 'response_received_at' column in the
+    'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_response_received_at
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_response_received_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_response_received_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_response_received_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_session_variables
+  description: Update the 'session_variables' column in the
+    'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: jsonb!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_session_variables
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_session_variables_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_session_variables
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_session_variables
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_action_log_status
+  description: Update the 'status' column in the 'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_action_log_status
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_action_log_status_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_action_log_status
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_action_log_status
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_action_log_by_id_update_columns
+  description: Update the columns of the 'hdb_catalog_hdb_action_log' collection
+  fields:
+    - name: action_name
+      type: update_column_hdb_catalog_hdb_action_log_action_name
+      description: Update the 'action_name' column in the 'hdb_catalog_hdb_action_log'
+        collection.
+    - name: created_at
+      type: update_column_hdb_catalog_hdb_action_log_created_at
+      description: Update the 'created_at' column in the 'hdb_catalog_hdb_action_log'
+        collection.
+    - name: errors
+      type: update_column_hdb_catalog_hdb_action_log_errors
+      description: Update the 'errors' column in the 'hdb_catalog_hdb_action_log'
+        collection.
+    - name: id
+      type: update_column_hdb_catalog_hdb_action_log_id
+      description: Update the 'id' column in the 'hdb_catalog_hdb_action_log' collection.
+    - name: input_payload
+      type: update_column_hdb_catalog_hdb_action_log_input_payload
+      description: Update the 'input_payload' column in the
+        'hdb_catalog_hdb_action_log' collection.
+    - name: request_headers
+      type: update_column_hdb_catalog_hdb_action_log_request_headers
+      description: Update the 'request_headers' column in the
+        'hdb_catalog_hdb_action_log' collection.
+    - name: response_payload
+      type: update_column_hdb_catalog_hdb_action_log_response_payload
+      description: Update the 'response_payload' column in the
+        'hdb_catalog_hdb_action_log' collection.
+    - name: response_received_at
+      type: update_column_hdb_catalog_hdb_action_log_response_received_at
+      description: Update the 'response_received_at' column in the
+        'hdb_catalog_hdb_action_log' collection.
+    - name: session_variables
+      type: update_column_hdb_catalog_hdb_action_log_session_variables
+      description: Update the 'session_variables' column in the
+        'hdb_catalog_hdb_action_log' collection.
+    - name: status
+      type: update_column_hdb_catalog_hdb_action_log_status
+      description: Update the 'status' column in the 'hdb_catalog_hdb_action_log'
+        collection.
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_action_log_by_id_update_columns
+    inputTypeName: mypg_update_hdb_catalog_hdb_action_log_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_action_log_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_action_log_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - action_name
+          - created_at
+          - errors
+          - id
+          - input_payload
+          - request_headers
+          - response_payload
+          - response_received_at
+          - session_variables
+          - status
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_action_log_by_id_response
+  description: Responses from the 'update_hdb_catalog_hdb_action_log_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_action_log!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_action_log_by_id_response
+    inputTypeName: mypg_update_hdb_catalog_hdb_action_log_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_action_log_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_action_log_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_action_log_by_id
+  outputType: update_hdb_catalog_hdb_action_log_by_id_response!
+  arguments:
+    - name: key_id
+      type: uuid!
+    - name: post_check
+      type: hdb_catalog_hdb_action_log_bool_exp
+      description: Update permission post-condition predicate over the
+        'hdb_catalog_hdb_action_log' collection
+    - name: pre_check
+      type: hdb_catalog_hdb_action_log_bool_exp
+      description: Update permission pre-condition predicate over the
+        'hdb_catalog_hdb_action_log' collection
+    - name: update_columns
+      type: update_hdb_catalog_hdb_action_log_by_id_update_columns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hdb_catalog_hdb_action_log_by_id
+  graphql:
+    rootFieldName: mypg_update_hdb_catalog_hdb_action_log_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'hdb_catalog_hdb_action_log' collection using
+    the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_hdb_catalog_hdb_action_log_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

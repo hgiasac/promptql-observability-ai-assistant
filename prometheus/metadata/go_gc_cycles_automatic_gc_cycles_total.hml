@@ -734,6 +734,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_gc_cycles_automatic_gc_cycles_total
+      subscription:
+        rootField: prom_go_gc_cycles_automatic_gc_cycles_total
     selectUniques: []
     argumentsInputType: prom_go_gc_cycles_automatic_gc_cycles_total_arguments
     orderByExpressionType: prom_go_gc_cycles_automatic_gc_cycles_total_order_by
@@ -749,4 +751,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

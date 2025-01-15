@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_nf_conntrack_stat_insert
+      subscription:
+        rootField: prom_node_nf_conntrack_stat_insert
     selectUniques: []
     argumentsInputType: prom_node_nf_conntrack_stat_insert_arguments
     orderByExpressionType: prom_node_nf_conntrack_stat_insert_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

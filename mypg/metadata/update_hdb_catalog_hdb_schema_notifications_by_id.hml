@@ -1,0 +1,265 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_schema_notifications_id
+  description: Update the 'id' column in the
+    'hdb_catalog_hdb_schema_notifications' collection
+  fields:
+    - name: _set
+      type: int4!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_id
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_schema_notifications_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_schema_notifications_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_schema_notifications_instance_id
+  description: Update the 'instance_id' column in the
+    'hdb_catalog_hdb_schema_notifications' collection
+  fields:
+    - name: _set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_instance_id
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_instance_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_schema_notifications_instance_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_schema_notifications_instance_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_schema_notifications_notification
+  description: Update the 'notification' column in the
+    'hdb_catalog_hdb_schema_notifications' collection
+  fields:
+    - name: _set
+      type: json!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_notification
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_notification_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_schema_notifications_notification
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_schema_notifications_notification
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_schema_notifications_resource_version
+  description: Update the 'resource_version' column in the
+    'hdb_catalog_hdb_schema_notifications' collection
+  fields:
+    - name: _set
+      type: int4!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_resource_version
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_resource_version_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_schema_notifications_resource_version
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_schema_notifications_resource_version
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_schema_notifications_updated_at
+  description: Update the 'updated_at' column in the
+    'hdb_catalog_hdb_schema_notifications' collection
+  fields:
+    - name: _set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_updated_at
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_schema_notifications_updated_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_schema_notifications_updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_schema_notifications_updated_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_schema_notifications_by_id_update_columns
+  description: Update the columns of the 'hdb_catalog_hdb_schema_notifications' collection
+  fields:
+    - name: id
+      type: update_column_hdb_catalog_hdb_schema_notifications_id
+      description: Update the 'id' column in the
+        'hdb_catalog_hdb_schema_notifications' collection.
+    - name: instance_id
+      type: update_column_hdb_catalog_hdb_schema_notifications_instance_id
+      description: Update the 'instance_id' column in the
+        'hdb_catalog_hdb_schema_notifications' collection.
+    - name: notification
+      type: update_column_hdb_catalog_hdb_schema_notifications_notification
+      description: Update the 'notification' column in the
+        'hdb_catalog_hdb_schema_notifications' collection.
+    - name: resource_version
+      type: update_column_hdb_catalog_hdb_schema_notifications_resource_version
+      description: Update the 'resource_version' column in the
+        'hdb_catalog_hdb_schema_notifications' collection.
+    - name: updated_at
+      type: update_column_hdb_catalog_hdb_schema_notifications_updated_at
+      description: Update the 'updated_at' column in the
+        'hdb_catalog_hdb_schema_notifications' collection.
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_schema_notifications_by_id_update_columns
+    inputTypeName: mypg_update_hdb_catalog_hdb_schema_notifications_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_schema_notifications_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_schema_notifications_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - instance_id
+          - notification
+          - resource_version
+          - updated_at
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_schema_notifications_by_id_response
+  description: Responses from the
+    'update_hdb_catalog_hdb_schema_notifications_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_schema_notifications!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_schema_notifications_by_id_response
+    inputTypeName: mypg_update_hdb_catalog_hdb_schema_notifications_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_schema_notifications_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_schema_notifications_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_schema_notifications_by_id
+  outputType: update_hdb_catalog_hdb_schema_notifications_by_id_response!
+  arguments:
+    - name: key_id
+      type: int4!
+    - name: post_check
+      type: hdb_catalog_hdb_schema_notifications_bool_exp
+      description: Update permission post-condition predicate over the
+        'hdb_catalog_hdb_schema_notifications' collection
+    - name: pre_check
+      type: hdb_catalog_hdb_schema_notifications_bool_exp
+      description: Update permission pre-condition predicate over the
+        'hdb_catalog_hdb_schema_notifications' collection
+    - name: update_columns
+      type: update_hdb_catalog_hdb_schema_notifications_by_id_update_columns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hdb_catalog_hdb_schema_notifications_by_id
+  graphql:
+    rootFieldName: mypg_update_hdb_catalog_hdb_schema_notifications_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'hdb_catalog_hdb_schema_notifications'
+    collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_hdb_catalog_hdb_schema_notifications_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

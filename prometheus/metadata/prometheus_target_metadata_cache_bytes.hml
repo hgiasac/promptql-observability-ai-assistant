@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_target_metadata_cache_bytes
+      subscription:
+        rootField: prom_prometheus_target_metadata_cache_bytes
     selectUniques: []
     argumentsInputType: prom_prometheus_target_metadata_cache_bytes_arguments
     orderByExpressionType: prom_prometheus_target_metadata_cache_bytes_order_by
@@ -591,4 +593,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

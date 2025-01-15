@@ -449,6 +449,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: nginx_log_aggregate
+      subscription:
+        rootField: nginx_log_aggregate
     selectUniques: []
     argumentsInputType: nginx_log_aggregate_arguments
     orderByExpressionType: nginx_log_aggregate_order_by
@@ -462,4 +464,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

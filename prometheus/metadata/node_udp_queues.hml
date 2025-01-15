@@ -583,6 +583,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_udp_queues
+      subscription:
+        rootField: prom_node_udp_queues
     selectUniques: []
     argumentsInputType: prom_node_udp_queues_arguments
     orderByExpressionType: prom_node_udp_queues_order_by
@@ -597,4 +599,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

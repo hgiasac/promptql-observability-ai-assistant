@@ -1,0 +1,134 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Album
+  fields:
+    - name: AlbumId
+      type: int4!
+    - name: ArtistId
+      type: int4!
+    - name: Title
+      type: varchar!
+  graphql:
+    typeName: mypg_Album
+    inputTypeName: mypg_Album_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: Album
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Album
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - AlbumId
+          - ArtistId
+          - Title
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Album_bool_exp
+  operand:
+    object:
+      type: Album
+      comparableFields:
+        - fieldName: AlbumId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: ArtistId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Title
+          booleanExpressionType: varchar_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_Album_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: Album_agg_exp
+  operand:
+    object:
+      aggregatedType: Album
+      aggregatableFields:
+        - fieldName: AlbumId
+          aggregateExpression: int4_agg_exp
+        - fieldName: ArtistId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Title
+          aggregateExpression: varchar_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_Album_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: Album_order_by_exp
+  operand:
+    object:
+      orderedType: Album
+      orderableFields:
+        - fieldName: AlbumId
+          orderByExpression: int4_order_by_exp
+        - fieldName: ArtistId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Title
+          orderByExpression: varchar_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_Album_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: Album
+  objectType: Album
+  source:
+    dataConnectorName: mypostgres
+    collection: Album
+  filterExpressionType: Album_bool_exp
+  aggregateExpression: Album_agg_exp
+  orderByExpression: Album_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_Album
+      subscription:
+        rootField: mypg_Album
+    selectUniques:
+      - queryRootField: mypg_Album_by_AlbumId
+        uniqueIdentifier:
+          - AlbumId
+        subscription:
+          rootField: mypg_Album_by_AlbumId
+    filterInputTypeName: mypg_Album_filter_input
+    aggregate:
+      queryRootField: mypg_Album_aggregate
+      subscription:
+        rootField: mypg_Album_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: Album
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

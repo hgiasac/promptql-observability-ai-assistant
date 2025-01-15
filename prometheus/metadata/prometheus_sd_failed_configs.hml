@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_sd_failed_configs
+      subscription:
+        rootField: prom_prometheus_sd_failed_configs
     selectUniques: []
     argumentsInputType: prom_prometheus_sd_failed_configs_arguments
     orderByExpressionType: prom_prometheus_sd_failed_configs_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

@@ -1,0 +1,62 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_Playlist_by_PlaylistId_response
+  description: Responses from the 'delete_Playlist_by_PlaylistId' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Playlist!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_delete_Playlist_by_PlaylistId_response
+    inputTypeName: mypg_delete_Playlist_by_PlaylistId_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_Playlist_by_PlaylistId_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_Playlist_by_PlaylistId_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_Playlist_by_PlaylistId
+  outputType: delete_Playlist_by_PlaylistId_response!
+  arguments:
+    - name: key_PlaylistId
+      type: int4!
+    - name: pre_check
+      type: Playlist_bool_exp
+      description: Delete permission predicate over the 'Playlist' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_Playlist_by_PlaylistId
+  graphql:
+    rootFieldName: mypg_delete_Playlist_by_PlaylistId
+    rootFieldKind: Mutation
+  description: Delete any row on the 'Playlist' collection using the 'PlaylistId' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_Playlist_by_PlaylistId
+  permissions:
+    - role: admin
+      allowExecution: true
+

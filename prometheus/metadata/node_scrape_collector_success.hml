@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_scrape_collector_success
+      subscription:
+        rootField: prom_node_scrape_collector_success
     selectUniques: []
     argumentsInputType: prom_node_scrape_collector_success_arguments
     orderByExpressionType: prom_node_scrape_collector_success_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

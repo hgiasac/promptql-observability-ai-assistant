@@ -1,0 +1,197 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: hdb_catalog_hdb_action_log
+  fields:
+    - name: action_name
+      type: text
+    - name: created_at
+      type: timestamptz!
+    - name: errors
+      type: jsonb
+    - name: id
+      type: uuid!
+    - name: input_payload
+      type: jsonb!
+    - name: request_headers
+      type: jsonb!
+    - name: response_payload
+      type: jsonb
+    - name: response_received_at
+      type: timestamptz
+    - name: session_variables
+      type: jsonb!
+    - name: status
+      type: text!
+  graphql:
+    typeName: mypg_hdb_catalog_hdb_action_log
+    inputTypeName: mypg_hdb_catalog_hdb_action_log_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: hdb_catalog_hdb_action_log
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: hdb_catalog_hdb_action_log
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - action_name
+          - created_at
+          - errors
+          - id
+          - input_payload
+          - request_headers
+          - response_payload
+          - response_received_at
+          - session_variables
+          - status
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: hdb_catalog_hdb_action_log_bool_exp
+  operand:
+    object:
+      type: hdb_catalog_hdb_action_log
+      comparableFields:
+        - fieldName: action_name
+          booleanExpressionType: text_bool_exp
+        - fieldName: created_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: errors
+          booleanExpressionType: jsonb_bool_exp
+        - fieldName: id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: input_payload
+          booleanExpressionType: jsonb_bool_exp
+        - fieldName: request_headers
+          booleanExpressionType: jsonb_bool_exp
+        - fieldName: response_payload
+          booleanExpressionType: jsonb_bool_exp
+        - fieldName: response_received_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: session_variables
+          booleanExpressionType: jsonb_bool_exp
+        - fieldName: status
+          booleanExpressionType: text_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_hdb_catalog_hdb_action_log_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: hdb_catalog_hdb_action_log_agg_exp
+  operand:
+    object:
+      aggregatedType: hdb_catalog_hdb_action_log
+      aggregatableFields:
+        - fieldName: action_name
+          aggregateExpression: text_agg_exp
+        - fieldName: created_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: errors
+          aggregateExpression: jsonb_agg_exp
+        - fieldName: id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: input_payload
+          aggregateExpression: jsonb_agg_exp
+        - fieldName: request_headers
+          aggregateExpression: jsonb_agg_exp
+        - fieldName: response_payload
+          aggregateExpression: jsonb_agg_exp
+        - fieldName: response_received_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: session_variables
+          aggregateExpression: jsonb_agg_exp
+        - fieldName: status
+          aggregateExpression: text_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_hdb_catalog_hdb_action_log_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: hdb_catalog_hdb_action_log_order_by_exp
+  operand:
+    object:
+      orderedType: hdb_catalog_hdb_action_log
+      orderableFields:
+        - fieldName: action_name
+          orderByExpression: text_order_by_exp
+        - fieldName: created_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: errors
+          orderByExpression: jsonb_order_by_exp
+        - fieldName: id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: input_payload
+          orderByExpression: jsonb_order_by_exp
+        - fieldName: request_headers
+          orderByExpression: jsonb_order_by_exp
+        - fieldName: response_payload
+          orderByExpression: jsonb_order_by_exp
+        - fieldName: response_received_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: session_variables
+          orderByExpression: jsonb_order_by_exp
+        - fieldName: status
+          orderByExpression: text_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_hdb_catalog_hdb_action_log_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: hdb_catalog_hdb_action_log
+  objectType: hdb_catalog_hdb_action_log
+  source:
+    dataConnectorName: mypostgres
+    collection: hdb_catalog_hdb_action_log
+  filterExpressionType: hdb_catalog_hdb_action_log_bool_exp
+  aggregateExpression: hdb_catalog_hdb_action_log_agg_exp
+  orderByExpression: hdb_catalog_hdb_action_log_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_hdb_catalog_hdb_action_log
+      subscription:
+        rootField: mypg_hdb_catalog_hdb_action_log
+    selectUniques:
+      - queryRootField: mypg_hdb_catalog_hdb_action_log_by_id
+        uniqueIdentifier:
+          - id
+        subscription:
+          rootField: mypg_hdb_catalog_hdb_action_log_by_id
+    filterInputTypeName: mypg_hdb_catalog_hdb_action_log_filter_input
+    aggregate:
+      queryRootField: mypg_hdb_catalog_hdb_action_log_aggregate
+      subscription:
+        rootField: mypg_hdb_catalog_hdb_action_log_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: hdb_catalog_hdb_action_log
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

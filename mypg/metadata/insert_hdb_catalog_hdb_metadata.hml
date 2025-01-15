@@ -1,0 +1,95 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_metadata_object
+  fields:
+    - name: id
+      type: int4!
+    - name: metadata
+      type: json!
+    - name: resource_version
+      type: int4
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_metadata_object
+    inputTypeName: mypg_insert_hdb_catalog_hdb_metadata_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_metadata_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_metadata_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - metadata
+          - resource_version
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_metadata_response
+  description: Responses from the 'insert_hdb_catalog_hdb_metadata' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_metadata!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_metadata_response
+    inputTypeName: mypg_insert_hdb_catalog_hdb_metadata_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_metadata_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_metadata_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_metadata
+  outputType: insert_hdb_catalog_hdb_metadata_response!
+  arguments:
+    - name: objects
+      type: "[insert_hdb_catalog_hdb_metadata_object!]!"
+    - name: post_check
+      type: hdb_catalog_hdb_metadata_bool_exp
+      description: Insert permission predicate over the 'hdb_catalog_hdb_metadata'
+        collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_hdb_catalog_hdb_metadata
+  graphql:
+    rootFieldName: mypg_insert_hdb_catalog_hdb_metadata
+    rootFieldKind: Mutation
+  description: Insert into the hdb_catalog_hdb_metadata table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_hdb_catalog_hdb_metadata
+  permissions:
+    - role: admin
+      allowExecution: true
+

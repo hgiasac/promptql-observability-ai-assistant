@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_http_response_size_bytes_count
+      subscription:
+        rootField: prom_prometheus_http_response_size_bytes_count
     selectUniques: []
     argumentsInputType: prom_prometheus_http_response_size_bytes_count_arguments
     orderByExpressionType: prom_prometheus_http_response_size_bytes_count_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

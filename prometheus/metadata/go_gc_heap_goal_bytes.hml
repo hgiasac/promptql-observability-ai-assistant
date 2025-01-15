@@ -567,6 +567,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_gc_heap_goal_bytes
+      subscription:
+        rootField: prom_go_gc_heap_goal_bytes
     selectUniques: []
     argumentsInputType: prom_go_gc_heap_goal_bytes_arguments
     orderByExpressionType: prom_go_gc_heap_goal_bytes_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

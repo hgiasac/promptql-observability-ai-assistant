@@ -1,0 +1,224 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Customer
+  fields:
+    - name: Address
+      type: varchar
+    - name: City
+      type: varchar
+    - name: Company
+      type: varchar
+    - name: Country
+      type: varchar
+    - name: CustomerId
+      type: int4!
+    - name: Email
+      type: varchar!
+    - name: Fax
+      type: varchar
+    - name: FirstName
+      type: varchar!
+    - name: LastName
+      type: varchar!
+    - name: Phone
+      type: varchar
+    - name: PostalCode
+      type: varchar
+    - name: State
+      type: varchar
+    - name: SupportRepId
+      type: int4
+  graphql:
+    typeName: mypg_Customer
+    inputTypeName: mypg_Customer_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: Customer
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Customer
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - Address
+          - City
+          - Company
+          - Country
+          - CustomerId
+          - Email
+          - Fax
+          - FirstName
+          - LastName
+          - Phone
+          - PostalCode
+          - State
+          - SupportRepId
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Customer_bool_exp
+  operand:
+    object:
+      type: Customer
+      comparableFields:
+        - fieldName: Address
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: City
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Company
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Country
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: CustomerId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Email
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Fax
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: FirstName
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: LastName
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Phone
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: PostalCode
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: State
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: SupportRepId
+          booleanExpressionType: int4_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_Customer_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: Customer_agg_exp
+  operand:
+    object:
+      aggregatedType: Customer
+      aggregatableFields:
+        - fieldName: Address
+          aggregateExpression: varchar_agg_exp
+        - fieldName: City
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Company
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Country
+          aggregateExpression: varchar_agg_exp
+        - fieldName: CustomerId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Email
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Fax
+          aggregateExpression: varchar_agg_exp
+        - fieldName: FirstName
+          aggregateExpression: varchar_agg_exp
+        - fieldName: LastName
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Phone
+          aggregateExpression: varchar_agg_exp
+        - fieldName: PostalCode
+          aggregateExpression: varchar_agg_exp
+        - fieldName: State
+          aggregateExpression: varchar_agg_exp
+        - fieldName: SupportRepId
+          aggregateExpression: int4_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_Customer_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: Customer_order_by_exp
+  operand:
+    object:
+      orderedType: Customer
+      orderableFields:
+        - fieldName: Address
+          orderByExpression: varchar_order_by_exp
+        - fieldName: City
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Company
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Country
+          orderByExpression: varchar_order_by_exp
+        - fieldName: CustomerId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Email
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Fax
+          orderByExpression: varchar_order_by_exp
+        - fieldName: FirstName
+          orderByExpression: varchar_order_by_exp
+        - fieldName: LastName
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Phone
+          orderByExpression: varchar_order_by_exp
+        - fieldName: PostalCode
+          orderByExpression: varchar_order_by_exp
+        - fieldName: State
+          orderByExpression: varchar_order_by_exp
+        - fieldName: SupportRepId
+          orderByExpression: int4_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_Customer_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: Customer
+  objectType: Customer
+  source:
+    dataConnectorName: mypostgres
+    collection: Customer
+  filterExpressionType: Customer_bool_exp
+  aggregateExpression: Customer_agg_exp
+  orderByExpression: Customer_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_Customer
+      subscription:
+        rootField: mypg_Customer
+    selectUniques:
+      - queryRootField: mypg_Customer_by_CustomerId
+        uniqueIdentifier:
+          - CustomerId
+        subscription:
+          rootField: mypg_Customer_by_CustomerId
+    filterInputTypeName: mypg_Customer_filter_input
+    aggregate:
+      queryRootField: mypg_Customer_aggregate
+      subscription:
+        rootField: mypg_Customer_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: Customer
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

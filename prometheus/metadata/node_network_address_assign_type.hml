@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_network_address_assign_type
+      subscription:
+        rootField: prom_node_network_address_assign_type
     selectUniques: []
     argumentsInputType: prom_node_network_address_assign_type_arguments
     orderByExpressionType: prom_node_network_address_assign_type_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

@@ -22,6 +22,7 @@ scrape_configs:
           - localhost:9090
           - node-exporter:9100
           - engine:3000
+          - otel-collector:8889
 
   - job_name: "myloki"
 

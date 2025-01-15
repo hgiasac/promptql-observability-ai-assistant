@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_cpu_frequency_min_hertz
+      subscription:
+        rootField: prom_node_cpu_frequency_min_hertz
     selectUniques: []
     argumentsInputType: prom_node_cpu_frequency_min_hertz_arguments
     orderByExpressionType: prom_node_cpu_frequency_min_hertz_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

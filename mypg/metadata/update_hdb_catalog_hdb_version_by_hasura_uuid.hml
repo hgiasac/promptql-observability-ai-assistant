@@ -1,0 +1,325 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_version_cli_state
+  description: Update the 'cli_state' column in the 'hdb_catalog_hdb_version' collection
+  fields:
+    - name: _set
+      type: jsonb!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_version_cli_state
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_version_cli_state_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_version_cli_state
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_version_cli_state
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_version_console_state
+  description: Update the 'console_state' column in the 'hdb_catalog_hdb_version' collection
+  fields:
+    - name: _set
+      type: jsonb!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_version_console_state
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_version_console_state_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_version_console_state
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_version_console_state
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_version_ee_client_id
+  description: Update the 'ee_client_id' column in the 'hdb_catalog_hdb_version' collection
+  fields:
+    - name: _set
+      type: text
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_version_ee_client_id
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_version_ee_client_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_version_ee_client_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_version_ee_client_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_version_ee_client_secret
+  description: Update the 'ee_client_secret' column in the
+    'hdb_catalog_hdb_version' collection
+  fields:
+    - name: _set
+      type: text
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_version_ee_client_secret
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_version_ee_client_secret_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_version_ee_client_secret
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_version_ee_client_secret
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_version_hasura_uuid
+  description: Update the 'hasura_uuid' column in the 'hdb_catalog_hdb_version' collection
+  fields:
+    - name: _set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_version_hasura_uuid
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_version_hasura_uuid_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_version_hasura_uuid
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_version_hasura_uuid
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_version_upgraded_on
+  description: Update the 'upgraded_on' column in the 'hdb_catalog_hdb_version' collection
+  fields:
+    - name: _set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_version_upgraded_on
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_version_upgraded_on_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_version_upgraded_on
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_version_upgraded_on
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_version_version
+  description: Update the 'version' column in the 'hdb_catalog_hdb_version' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_version_version
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_version_version_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_version_version
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_version_version
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_version_by_hasura_uuid_update_columns
+  description: Update the columns of the 'hdb_catalog_hdb_version' collection
+  fields:
+    - name: cli_state
+      type: update_column_hdb_catalog_hdb_version_cli_state
+      description: Update the 'cli_state' column in the 'hdb_catalog_hdb_version'
+        collection.
+    - name: console_state
+      type: update_column_hdb_catalog_hdb_version_console_state
+      description: Update the 'console_state' column in the 'hdb_catalog_hdb_version'
+        collection.
+    - name: ee_client_id
+      type: update_column_hdb_catalog_hdb_version_ee_client_id
+      description: Update the 'ee_client_id' column in the 'hdb_catalog_hdb_version'
+        collection.
+    - name: ee_client_secret
+      type: update_column_hdb_catalog_hdb_version_ee_client_secret
+      description: Update the 'ee_client_secret' column in the
+        'hdb_catalog_hdb_version' collection.
+    - name: hasura_uuid
+      type: update_column_hdb_catalog_hdb_version_hasura_uuid
+      description: Update the 'hasura_uuid' column in the 'hdb_catalog_hdb_version'
+        collection.
+    - name: upgraded_on
+      type: update_column_hdb_catalog_hdb_version_upgraded_on
+      description: Update the 'upgraded_on' column in the 'hdb_catalog_hdb_version'
+        collection.
+    - name: version
+      type: update_column_hdb_catalog_hdb_version_version
+      description: Update the 'version' column in the 'hdb_catalog_hdb_version' collection.
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_version_by_hasura_uuid_update_columns
+    inputTypeName: mypg_update_hdb_catalog_hdb_version_by_hasura_uuid_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_version_by_hasura_uuid_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_version_by_hasura_uuid_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - cli_state
+          - console_state
+          - ee_client_id
+          - ee_client_secret
+          - hasura_uuid
+          - upgraded_on
+          - version
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_version_by_hasura_uuid_response
+  description: Responses from the 'update_hdb_catalog_hdb_version_by_hasura_uuid' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_version!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_version_by_hasura_uuid_response
+    inputTypeName: mypg_update_hdb_catalog_hdb_version_by_hasura_uuid_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_version_by_hasura_uuid_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_version_by_hasura_uuid_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_version_by_hasura_uuid
+  outputType: update_hdb_catalog_hdb_version_by_hasura_uuid_response!
+  arguments:
+    - name: key_hasura_uuid
+      type: uuid!
+    - name: post_check
+      type: hdb_catalog_hdb_version_bool_exp
+      description: Update permission post-condition predicate over the
+        'hdb_catalog_hdb_version' collection
+    - name: pre_check
+      type: hdb_catalog_hdb_version_bool_exp
+      description: Update permission pre-condition predicate over the
+        'hdb_catalog_hdb_version' collection
+    - name: update_columns
+      type: update_hdb_catalog_hdb_version_by_hasura_uuid_update_columns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hdb_catalog_hdb_version_by_hasura_uuid
+  graphql:
+    rootFieldName: mypg_update_hdb_catalog_hdb_version_by_hasura_uuid
+    rootFieldKind: Mutation
+  description: Update any row on the 'hdb_catalog_hdb_version' collection using
+    the 'hasura_uuid' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_hdb_catalog_hdb_version_by_hasura_uuid
+  permissions:
+    - role: admin
+      allowExecution: true
+

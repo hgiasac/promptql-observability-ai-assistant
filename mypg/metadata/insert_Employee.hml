@@ -1,0 +1,130 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Employee_object
+  fields:
+    - name: Address
+      type: varchar
+    - name: BirthDate
+      type: timestamp
+    - name: City
+      type: varchar
+    - name: Country
+      type: varchar
+    - name: Email
+      type: varchar
+    - name: EmployeeId
+      type: int4!
+    - name: Fax
+      type: varchar
+    - name: FirstName
+      type: varchar!
+    - name: HireDate
+      type: timestamp
+    - name: LastName
+      type: varchar!
+    - name: Phone
+      type: varchar
+    - name: PostalCode
+      type: varchar
+    - name: ReportsTo
+      type: int4
+    - name: State
+      type: varchar
+    - name: Title
+      type: varchar
+  graphql:
+    typeName: mypg_insert_Employee_object
+    inputTypeName: mypg_insert_Employee_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Employee_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Employee_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - Address
+          - BirthDate
+          - City
+          - Country
+          - Email
+          - EmployeeId
+          - Fax
+          - FirstName
+          - HireDate
+          - LastName
+          - Phone
+          - PostalCode
+          - ReportsTo
+          - State
+          - Title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Employee_response
+  description: Responses from the 'insert_Employee' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Employee!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_Employee_response
+    inputTypeName: mypg_insert_Employee_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Employee_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Employee_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_Employee
+  outputType: insert_Employee_response!
+  arguments:
+    - name: objects
+      type: "[insert_Employee_object!]!"
+    - name: post_check
+      type: Employee_bool_exp
+      description: Insert permission predicate over the 'Employee' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_Employee
+  graphql:
+    rootFieldName: mypg_insert_Employee
+    rootFieldKind: Mutation
+  description: Insert into the Employee table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_Employee
+  permissions:
+    - role: admin
+      allowExecution: true
+

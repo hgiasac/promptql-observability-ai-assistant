@@ -1,0 +1,242 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Employee
+  fields:
+    - name: Address
+      type: varchar
+    - name: BirthDate
+      type: timestamp
+    - name: City
+      type: varchar
+    - name: Country
+      type: varchar
+    - name: Email
+      type: varchar
+    - name: EmployeeId
+      type: int4!
+    - name: Fax
+      type: varchar
+    - name: FirstName
+      type: varchar!
+    - name: HireDate
+      type: timestamp
+    - name: LastName
+      type: varchar!
+    - name: Phone
+      type: varchar
+    - name: PostalCode
+      type: varchar
+    - name: ReportsTo
+      type: int4
+    - name: State
+      type: varchar
+    - name: Title
+      type: varchar
+  graphql:
+    typeName: mypg_Employee
+    inputTypeName: mypg_Employee_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: Employee
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Employee
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - Address
+          - BirthDate
+          - City
+          - Country
+          - Email
+          - EmployeeId
+          - Fax
+          - FirstName
+          - HireDate
+          - LastName
+          - Phone
+          - PostalCode
+          - ReportsTo
+          - State
+          - Title
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Employee_bool_exp
+  operand:
+    object:
+      type: Employee
+      comparableFields:
+        - fieldName: Address
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: BirthDate
+          booleanExpressionType: timestamp_bool_exp
+        - fieldName: City
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Country
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Email
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: EmployeeId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Fax
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: FirstName
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: HireDate
+          booleanExpressionType: timestamp_bool_exp
+        - fieldName: LastName
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Phone
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: PostalCode
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: ReportsTo
+          booleanExpressionType: int4_bool_exp
+        - fieldName: State
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: Title
+          booleanExpressionType: varchar_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_Employee_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: Employee_agg_exp
+  operand:
+    object:
+      aggregatedType: Employee
+      aggregatableFields:
+        - fieldName: Address
+          aggregateExpression: varchar_agg_exp
+        - fieldName: BirthDate
+          aggregateExpression: timestamp_agg_exp
+        - fieldName: City
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Country
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Email
+          aggregateExpression: varchar_agg_exp
+        - fieldName: EmployeeId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Fax
+          aggregateExpression: varchar_agg_exp
+        - fieldName: FirstName
+          aggregateExpression: varchar_agg_exp
+        - fieldName: HireDate
+          aggregateExpression: timestamp_agg_exp
+        - fieldName: LastName
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Phone
+          aggregateExpression: varchar_agg_exp
+        - fieldName: PostalCode
+          aggregateExpression: varchar_agg_exp
+        - fieldName: ReportsTo
+          aggregateExpression: int4_agg_exp
+        - fieldName: State
+          aggregateExpression: varchar_agg_exp
+        - fieldName: Title
+          aggregateExpression: varchar_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_Employee_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: Employee_order_by_exp
+  operand:
+    object:
+      orderedType: Employee
+      orderableFields:
+        - fieldName: Address
+          orderByExpression: varchar_order_by_exp
+        - fieldName: BirthDate
+          orderByExpression: timestamp_order_by_exp
+        - fieldName: City
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Country
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Email
+          orderByExpression: varchar_order_by_exp
+        - fieldName: EmployeeId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Fax
+          orderByExpression: varchar_order_by_exp
+        - fieldName: FirstName
+          orderByExpression: varchar_order_by_exp
+        - fieldName: HireDate
+          orderByExpression: timestamp_order_by_exp
+        - fieldName: LastName
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Phone
+          orderByExpression: varchar_order_by_exp
+        - fieldName: PostalCode
+          orderByExpression: varchar_order_by_exp
+        - fieldName: ReportsTo
+          orderByExpression: int4_order_by_exp
+        - fieldName: State
+          orderByExpression: varchar_order_by_exp
+        - fieldName: Title
+          orderByExpression: varchar_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_Employee_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: Employee
+  objectType: Employee
+  source:
+    dataConnectorName: mypostgres
+    collection: Employee
+  filterExpressionType: Employee_bool_exp
+  aggregateExpression: Employee_agg_exp
+  orderByExpression: Employee_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_Employee
+      subscription:
+        rootField: mypg_Employee
+    selectUniques:
+      - queryRootField: mypg_Employee_by_EmployeeId
+        uniqueIdentifier:
+          - EmployeeId
+        subscription:
+          rootField: mypg_Employee_by_EmployeeId
+    filterInputTypeName: mypg_Employee_filter_input
+    aggregate:
+      queryRootField: mypg_Employee_aggregate
+      subscription:
+        rootField: mypg_Employee_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: Employee
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

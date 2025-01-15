@@ -592,6 +592,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_ndc_loki_query_total_time_bucket
+      subscription:
+        rootField: prom_ndc_loki_query_total_time_bucket
     selectUniques: []
     argumentsInputType: prom_ndc_loki_query_total_time_bucket_arguments
     orderByExpressionType: prom_ndc_loki_query_total_time_bucket_order_by
@@ -606,4 +608,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

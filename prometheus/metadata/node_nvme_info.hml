@@ -607,6 +607,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_nvme_info
+      subscription:
+        rootField: prom_node_nvme_info
     selectUniques: []
     argumentsInputType: prom_node_nvme_info_arguments
     orderByExpressionType: prom_node_nvme_info_order_by
@@ -621,4 +623,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

@@ -148,6 +148,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: http_log
+      subscription:
+        rootField: http_log
     selectUniques: []
     argumentsInputType: http_log_arguments
     orderByExpressionType: http_log_order_by
@@ -161,4 +163,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_power_supply_energy_watthour
+      subscription:
+        rootField: prom_node_power_supply_energy_watthour
     selectUniques: []
     argumentsInputType: prom_node_power_supply_energy_watthour_arguments
     orderByExpressionType: prom_node_power_supply_energy_watthour_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

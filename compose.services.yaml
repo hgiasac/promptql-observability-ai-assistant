@@ -3,9 +3,11 @@ services:
     image: postgres:17.0
     restart: always
     ports:
-      - "5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    extra_hosts:
+      - local.hasura.dev:host-gateway
     environment:
       POSTGRES_PASSWORD: postgrespassword
 

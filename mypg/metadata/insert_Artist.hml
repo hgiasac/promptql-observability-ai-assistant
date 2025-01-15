@@ -1,0 +1,91 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Artist_object
+  fields:
+    - name: ArtistId
+      type: int4!
+    - name: Name
+      type: varchar
+  graphql:
+    typeName: mypg_insert_Artist_object
+    inputTypeName: mypg_insert_Artist_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Artist_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Artist_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - ArtistId
+          - Name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Artist_response
+  description: Responses from the 'insert_Artist' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Artist!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_Artist_response
+    inputTypeName: mypg_insert_Artist_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Artist_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Artist_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_Artist
+  outputType: insert_Artist_response!
+  arguments:
+    - name: objects
+      type: "[insert_Artist_object!]!"
+    - name: post_check
+      type: Artist_bool_exp
+      description: Insert permission predicate over the 'Artist' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_Artist
+  graphql:
+    rootFieldName: mypg_insert_Artist
+    rootFieldKind: Mutation
+  description: Insert into the Artist table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_Artist
+  permissions:
+    - role: admin
+      allowExecution: true
+

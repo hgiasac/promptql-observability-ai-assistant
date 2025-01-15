@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_gc_heap_frees_by_size_bytes_sum
+      subscription:
+        rootField: prom_go_gc_heap_frees_by_size_bytes_sum
     selectUniques: []
     argumentsInputType: prom_go_gc_heap_frees_by_size_bytes_sum_arguments
     orderByExpressionType: prom_go_gc_heap_frees_by_size_bytes_sum_order_by
@@ -585,4 +587,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

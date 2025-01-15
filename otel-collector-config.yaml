@@ -9,10 +9,33 @@ exporters:
     tls:
       insecure: true
 
-  debug: {}
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+  # Data sources: traces, metrics, logs
+  debug:
+    verbosity: detailed
+
+  loki:
+    endpoint: http://loki:3100/loki/api/v1/push
+
+connectors:
+  spanmetrics:
+    exemplars:
+      enabled: true
+    metrics_flush_interval: 15s
+    dimensions:
+      - name: http.host
+    aggregation_temporality: "AGGREGATION_TEMPORALITY_DELTA"
 
 processors:
   batch: {}
+
+  memory_limiter:
+    check_interval: 5s
+    limit_percentage: 90
+    spike_limit_percentage: 50
+
 receivers:
   otlp:
     protocols:
@@ -20,26 +43,32 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
+
 service:
   pipelines:
     logs:
       exporters:
-        - otlp
-      processors:
-        - batch
-      receivers:
-        - otlp
-    metrics:
-      exporters:
+        - loki
         - debug
       processors:
         - batch
       receivers:
         - otlp
+
+    metrics:
+      exporters:
+        - prometheus
+      processors:
+        - batch
+      receivers:
+        - otlp
+        - spanmetrics
+
     traces:
       exporters:
         - otlp
         - otlp/jaeger
+        - spanmetrics
       processors:
         - batch
       receivers:

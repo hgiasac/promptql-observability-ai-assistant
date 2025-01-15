@@ -1,0 +1,300 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_cron_event_invocation_logs_created_at
+  description: Update the 'created_at' column in the
+    'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  fields:
+    - name: _set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_created_at
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_cron_event_invocation_logs_created_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_cron_event_invocation_logs_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_cron_event_invocation_logs_event_id
+  description: Update the 'event_id' column in the
+    'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  fields:
+    - name: _set
+      type: text
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_event_id
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_event_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_cron_event_invocation_logs_event_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_cron_event_invocation_logs_event_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_cron_event_invocation_logs_id
+  description: Update the 'id' column in the
+    'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_id
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_cron_event_invocation_logs_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_cron_event_invocation_logs_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_cron_event_invocation_logs_request
+  description: Update the 'request' column in the
+    'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  fields:
+    - name: _set
+      type: json
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_request
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_request_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_cron_event_invocation_logs_request
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_cron_event_invocation_logs_request
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_cron_event_invocation_logs_response
+  description: Update the 'response' column in the
+    'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  fields:
+    - name: _set
+      type: json
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_response
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_cron_event_invocation_logs_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_cron_event_invocation_logs_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_hdb_cron_event_invocation_logs_status
+  description: Update the 'status' column in the
+    'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  fields:
+    - name: _set
+      type: int4
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_status
+    inputTypeName: mypg_update_column_hdb_catalog_hdb_cron_event_invocation_logs_status_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_hdb_cron_event_invocation_logs_status
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_hdb_cron_event_invocation_logs_status
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_update_columns
+  description: Update the columns of the
+    'hdb_catalog_hdb_cron_event_invocation_logs' collection
+  fields:
+    - name: created_at
+      type: update_column_hdb_catalog_hdb_cron_event_invocation_logs_created_at
+      description: Update the 'created_at' column in the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection.
+    - name: event_id
+      type: update_column_hdb_catalog_hdb_cron_event_invocation_logs_event_id
+      description: Update the 'event_id' column in the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection.
+    - name: id
+      type: update_column_hdb_catalog_hdb_cron_event_invocation_logs_id
+      description: Update the 'id' column in the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection.
+    - name: request
+      type: update_column_hdb_catalog_hdb_cron_event_invocation_logs_request
+      description: Update the 'request' column in the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection.
+    - name: response
+      type: update_column_hdb_catalog_hdb_cron_event_invocation_logs_response
+      description: Update the 'response' column in the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection.
+    - name: status
+      type: update_column_hdb_catalog_hdb_cron_event_invocation_logs_status
+      description: Update the 'status' column in the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection.
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_update_columns
+    inputTypeName: mypg_update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - event_id
+          - id
+          - request
+          - response
+          - status
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_response
+  description: Responses from the
+    'update_hdb_catalog_hdb_cron_event_invocation_logs_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_cron_event_invocation_logs!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_response
+    inputTypeName: mypg_update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id
+  outputType: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_response!
+  arguments:
+    - name: key_id
+      type: text!
+    - name: post_check
+      type: hdb_catalog_hdb_cron_event_invocation_logs_bool_exp
+      description: Update permission post-condition predicate over the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection
+    - name: pre_check
+      type: hdb_catalog_hdb_cron_event_invocation_logs_bool_exp
+      description: Update permission pre-condition predicate over the
+        'hdb_catalog_hdb_cron_event_invocation_logs' collection
+    - name: update_columns
+      type: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id_update_columns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id
+  graphql:
+    rootFieldName: mypg_update_hdb_catalog_hdb_cron_event_invocation_logs_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'hdb_catalog_hdb_cron_event_invocation_logs'
+    collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_hdb_catalog_hdb_cron_event_invocation_logs_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

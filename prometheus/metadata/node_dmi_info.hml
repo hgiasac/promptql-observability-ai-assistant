@@ -695,6 +695,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_dmi_info
+      subscription:
+        rootField: prom_node_dmi_info
     selectUniques: []
     argumentsInputType: prom_node_dmi_info_arguments
     orderByExpressionType: prom_node_dmi_info_order_by
@@ -714,4 +716,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

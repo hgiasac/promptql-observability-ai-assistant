@@ -600,6 +600,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_filesystem_device_error
+      subscription:
+        rootField: prom_node_filesystem_device_error
     selectUniques: []
     argumentsInputType: prom_node_filesystem_device_error_arguments
     orderByExpressionType: prom_node_filesystem_device_error_order_by
@@ -614,4 +616,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

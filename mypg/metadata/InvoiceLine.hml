@@ -1,0 +1,152 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLine
+  fields:
+    - name: InvoiceId
+      type: int4!
+    - name: InvoiceLineId
+      type: int4!
+    - name: Quantity
+      type: int4!
+    - name: TrackId
+      type: int4!
+    - name: UnitPrice
+      type: numeric!
+  graphql:
+    typeName: mypg_InvoiceLine
+    inputTypeName: mypg_InvoiceLine_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: InvoiceLine
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLine
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - InvoiceId
+          - InvoiceLineId
+          - Quantity
+          - TrackId
+          - UnitPrice
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: InvoiceLine_bool_exp
+  operand:
+    object:
+      type: InvoiceLine
+      comparableFields:
+        - fieldName: InvoiceId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: InvoiceLineId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Quantity
+          booleanExpressionType: int4_bool_exp
+        - fieldName: TrackId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: UnitPrice
+          booleanExpressionType: numeric_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_InvoiceLine_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: InvoiceLine_agg_exp
+  operand:
+    object:
+      aggregatedType: InvoiceLine
+      aggregatableFields:
+        - fieldName: InvoiceId
+          aggregateExpression: int4_agg_exp
+        - fieldName: InvoiceLineId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Quantity
+          aggregateExpression: int4_agg_exp
+        - fieldName: TrackId
+          aggregateExpression: int4_agg_exp
+        - fieldName: UnitPrice
+          aggregateExpression: numeric_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_InvoiceLine_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: InvoiceLine_order_by_exp
+  operand:
+    object:
+      orderedType: InvoiceLine
+      orderableFields:
+        - fieldName: InvoiceId
+          orderByExpression: int4_order_by_exp
+        - fieldName: InvoiceLineId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Quantity
+          orderByExpression: int4_order_by_exp
+        - fieldName: TrackId
+          orderByExpression: int4_order_by_exp
+        - fieldName: UnitPrice
+          orderByExpression: numeric_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_InvoiceLine_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: InvoiceLine
+  objectType: InvoiceLine
+  source:
+    dataConnectorName: mypostgres
+    collection: InvoiceLine
+  filterExpressionType: InvoiceLine_bool_exp
+  aggregateExpression: InvoiceLine_agg_exp
+  orderByExpression: InvoiceLine_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_InvoiceLine
+      subscription:
+        rootField: mypg_InvoiceLine
+    selectUniques:
+      - queryRootField: mypg_InvoiceLine_by_InvoiceLineId
+        uniqueIdentifier:
+          - InvoiceLineId
+        subscription:
+          rootField: mypg_InvoiceLine_by_InvoiceLineId
+    filterInputTypeName: mypg_InvoiceLine_filter_input
+    aggregate:
+      queryRootField: mypg_InvoiceLine_aggregate
+      subscription:
+        rootField: mypg_InvoiceLine_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: InvoiceLine
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

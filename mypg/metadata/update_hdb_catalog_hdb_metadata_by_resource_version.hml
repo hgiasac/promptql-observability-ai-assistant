@@ -1,0 +1,109 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_metadata_by_resource_version_update_columns
+  description: Update the columns of the 'hdb_catalog_hdb_metadata' collection
+  fields:
+    - name: id
+      type: update_column_hdb_catalog_hdb_metadata_id
+      description: Update the 'id' column in the 'hdb_catalog_hdb_metadata' collection.
+    - name: metadata
+      type: update_column_hdb_catalog_hdb_metadata_metadata
+      description: Update the 'metadata' column in the 'hdb_catalog_hdb_metadata'
+        collection.
+    - name: resource_version
+      type: update_column_hdb_catalog_hdb_metadata_resource_version
+      description: Update the 'resource_version' column in the
+        'hdb_catalog_hdb_metadata' collection.
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_metadata_by_resource_version_update_columns
+    inputTypeName: mypg_update_hdb_catalog_hdb_metadata_by_resource_version_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_metadata_by_resource_version_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_metadata_by_resource_version_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - metadata
+          - resource_version
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_metadata_by_resource_version_response
+  description: Responses from the
+    'update_hdb_catalog_hdb_metadata_by_resource_version' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_metadata!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_update_hdb_catalog_hdb_metadata_by_resource_version_response
+    inputTypeName: mypg_update_hdb_catalog_hdb_metadata_by_resource_version_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_hdb_metadata_by_resource_version_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_hdb_metadata_by_resource_version_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_hdb_catalog_hdb_metadata_by_resource_version
+  outputType: update_hdb_catalog_hdb_metadata_by_resource_version_response!
+  arguments:
+    - name: key_resource_version
+      type: int4!
+    - name: post_check
+      type: hdb_catalog_hdb_metadata_bool_exp
+      description: Update permission post-condition predicate over the
+        'hdb_catalog_hdb_metadata' collection
+    - name: pre_check
+      type: hdb_catalog_hdb_metadata_bool_exp
+      description: Update permission pre-condition predicate over the
+        'hdb_catalog_hdb_metadata' collection
+    - name: update_columns
+      type: update_hdb_catalog_hdb_metadata_by_resource_version_update_columns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hdb_catalog_hdb_metadata_by_resource_version
+  graphql:
+    rootFieldName: mypg_update_hdb_catalog_hdb_metadata_by_resource_version
+    rootFieldKind: Mutation
+  description: Update any row on the 'hdb_catalog_hdb_metadata' collection using
+    the 'resource_version' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_hdb_catalog_hdb_metadata_by_resource_version
+  permissions:
+    - role: admin
+      allowExecution: true
+

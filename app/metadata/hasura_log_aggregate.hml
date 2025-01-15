@@ -417,6 +417,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: hasura_log_aggregate
+      subscription:
+        rootField: hasura_log_aggregate
     selectUniques: []
     argumentsInputType: hasura_log_aggregate_arguments
     orderByExpressionType: hasura_log_aggregate_order_by
@@ -430,4 +432,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

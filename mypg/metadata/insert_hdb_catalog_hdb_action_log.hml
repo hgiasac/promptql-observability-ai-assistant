@@ -1,0 +1,116 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_action_log_object
+  fields:
+    - name: action_name
+      type: text
+    - name: created_at
+      type: timestamptz
+    - name: errors
+      type: jsonb
+    - name: id
+      type: uuid
+    - name: input_payload
+      type: jsonb!
+    - name: request_headers
+      type: jsonb!
+    - name: response_payload
+      type: jsonb
+    - name: response_received_at
+      type: timestamptz
+    - name: session_variables
+      type: jsonb!
+    - name: status
+      type: text!
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_action_log_object
+    inputTypeName: mypg_insert_hdb_catalog_hdb_action_log_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_action_log_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_action_log_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - action_name
+          - created_at
+          - errors
+          - id
+          - input_payload
+          - request_headers
+          - response_payload
+          - response_received_at
+          - session_variables
+          - status
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_action_log_response
+  description: Responses from the 'insert_hdb_catalog_hdb_action_log' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_action_log!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_action_log_response
+    inputTypeName: mypg_insert_hdb_catalog_hdb_action_log_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_action_log_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_action_log_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_action_log
+  outputType: insert_hdb_catalog_hdb_action_log_response!
+  arguments:
+    - name: objects
+      type: "[insert_hdb_catalog_hdb_action_log_object!]!"
+    - name: post_check
+      type: hdb_catalog_hdb_action_log_bool_exp
+      description: Insert permission predicate over the 'hdb_catalog_hdb_action_log'
+        collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_hdb_catalog_hdb_action_log
+  graphql:
+    rootFieldName: mypg_insert_hdb_catalog_hdb_action_log
+    rootFieldKind: Mutation
+  description: Insert into the hdb_catalog_hdb_action_log table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_hdb_catalog_hdb_action_log
+  permissions:
+    - role: admin
+      allowExecution: true
+

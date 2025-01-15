@@ -1,0 +1,91 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_MediaType_object
+  fields:
+    - name: MediaTypeId
+      type: int4!
+    - name: Name
+      type: varchar
+  graphql:
+    typeName: mypg_insert_MediaType_object
+    inputTypeName: mypg_insert_MediaType_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_MediaType_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_MediaType_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - MediaTypeId
+          - Name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_MediaType_response
+  description: Responses from the 'insert_MediaType' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[MediaType!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_MediaType_response
+    inputTypeName: mypg_insert_MediaType_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_MediaType_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_MediaType_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_MediaType
+  outputType: insert_MediaType_response!
+  arguments:
+    - name: objects
+      type: "[insert_MediaType_object!]!"
+    - name: post_check
+      type: MediaType_bool_exp
+      description: Insert permission predicate over the 'MediaType' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_MediaType
+  graphql:
+    rootFieldName: mypg_insert_MediaType
+    rootFieldKind: Mutation
+  description: Insert into the MediaType table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_MediaType
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -567,6 +567,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_memstats_heap_objects
+      subscription:
+        rootField: prom_go_memstats_heap_objects
     selectUniques: []
     argumentsInputType: prom_go_memstats_heap_objects_arguments
     orderByExpressionType: prom_go_memstats_heap_objects_order_by
@@ -581,4 +583,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

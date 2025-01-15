@@ -1,0 +1,94 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Album_object
+  fields:
+    - name: AlbumId
+      type: int4
+    - name: ArtistId
+      type: int4!
+    - name: Title
+      type: varchar!
+  graphql:
+    typeName: mypg_insert_Album_object
+    inputTypeName: mypg_insert_Album_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Album_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Album_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - AlbumId
+          - ArtistId
+          - Title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Album_response
+  description: Responses from the 'insert_Album' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Album!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_Album_response
+    inputTypeName: mypg_insert_Album_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Album_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Album_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_Album
+  outputType: insert_Album_response!
+  arguments:
+    - name: objects
+      type: "[insert_Album_object!]!"
+    - name: post_check
+      type: Album_bool_exp
+      description: Insert permission predicate over the 'Album' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_Album
+  graphql:
+    rootFieldName: mypg_insert_Album
+    rootFieldKind: Mutation
+  description: Insert into the Album table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_Album
+  permissions:
+    - role: admin
+      allowExecution: true
+

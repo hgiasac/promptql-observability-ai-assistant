@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_timex_frequency_adjustment_ratio
+      subscription:
+        rootField: prom_node_timex_frequency_adjustment_ratio
     selectUniques: []
     argumentsInputType: prom_node_timex_frequency_adjustment_ratio_arguments
     orderByExpressionType: prom_node_timex_frequency_adjustment_ratio_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

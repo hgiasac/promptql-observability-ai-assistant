@@ -1,0 +1,100 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_InvoiceLine_object
+  fields:
+    - name: InvoiceId
+      type: int4!
+    - name: InvoiceLineId
+      type: int4!
+    - name: Quantity
+      type: int4!
+    - name: TrackId
+      type: int4!
+    - name: UnitPrice
+      type: numeric!
+  graphql:
+    typeName: mypg_insert_InvoiceLine_object
+    inputTypeName: mypg_insert_InvoiceLine_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_InvoiceLine_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_InvoiceLine_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - InvoiceId
+          - InvoiceLineId
+          - Quantity
+          - TrackId
+          - UnitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_InvoiceLine_response
+  description: Responses from the 'insert_InvoiceLine' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[InvoiceLine!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_InvoiceLine_response
+    inputTypeName: mypg_insert_InvoiceLine_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_InvoiceLine_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_InvoiceLine_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_InvoiceLine
+  outputType: insert_InvoiceLine_response!
+  arguments:
+    - name: objects
+      type: "[insert_InvoiceLine_object!]!"
+    - name: post_check
+      type: InvoiceLine_bool_exp
+      description: Insert permission predicate over the 'InvoiceLine' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_InvoiceLine
+  graphql:
+    rootFieldName: mypg_insert_InvoiceLine
+    rootFieldKind: Mutation
+  description: Insert into the InvoiceLine table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_InvoiceLine
+  permissions:
+    - role: admin
+      allowExecution: true
+

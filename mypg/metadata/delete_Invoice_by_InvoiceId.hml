@@ -1,0 +1,62 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_Invoice_by_InvoiceId_response
+  description: Responses from the 'delete_Invoice_by_InvoiceId' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Invoice!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_delete_Invoice_by_InvoiceId_response
+    inputTypeName: mypg_delete_Invoice_by_InvoiceId_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_Invoice_by_InvoiceId_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_Invoice_by_InvoiceId_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_Invoice_by_InvoiceId
+  outputType: delete_Invoice_by_InvoiceId_response!
+  arguments:
+    - name: key_InvoiceId
+      type: int4!
+    - name: pre_check
+      type: Invoice_bool_exp
+      description: Delete permission predicate over the 'Invoice' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_Invoice_by_InvoiceId
+  graphql:
+    rootFieldName: mypg_delete_Invoice_by_InvoiceId
+    rootFieldKind: Mutation
+  description: Delete any row on the 'Invoice' collection using the 'InvoiceId' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_Invoice_by_InvoiceId
+  permissions:
+    - role: admin
+      allowExecution: true
+

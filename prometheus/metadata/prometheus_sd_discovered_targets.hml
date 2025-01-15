@@ -584,6 +584,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_sd_discovered_targets
+      subscription:
+        rootField: prom_prometheus_sd_discovered_targets
     selectUniques: []
     argumentsInputType: prom_prometheus_sd_discovered_targets_arguments
     orderByExpressionType: prom_prometheus_sd_discovered_targets_order_by
@@ -598,4 +600,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

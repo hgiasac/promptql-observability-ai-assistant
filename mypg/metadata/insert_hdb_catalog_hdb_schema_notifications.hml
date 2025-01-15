@@ -1,0 +1,101 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_schema_notifications_object
+  fields:
+    - name: id
+      type: int4!
+    - name: instance_id
+      type: uuid!
+    - name: notification
+      type: json!
+    - name: resource_version
+      type: int4
+    - name: updated_at
+      type: timestamptz
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_schema_notifications_object
+    inputTypeName: mypg_insert_hdb_catalog_hdb_schema_notifications_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_schema_notifications_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_schema_notifications_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - instance_id
+          - notification
+          - resource_version
+          - updated_at
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_schema_notifications_response
+  description: Responses from the 'insert_hdb_catalog_hdb_schema_notifications' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_schema_notifications!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_schema_notifications_response
+    inputTypeName: mypg_insert_hdb_catalog_hdb_schema_notifications_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_schema_notifications_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_schema_notifications_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_schema_notifications
+  outputType: insert_hdb_catalog_hdb_schema_notifications_response!
+  arguments:
+    - name: objects
+      type: "[insert_hdb_catalog_hdb_schema_notifications_object!]!"
+    - name: post_check
+      type: hdb_catalog_hdb_schema_notifications_bool_exp
+      description: Insert permission predicate over the
+        'hdb_catalog_hdb_schema_notifications' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_hdb_catalog_hdb_schema_notifications
+  graphql:
+    rootFieldName: mypg_insert_hdb_catalog_hdb_schema_notifications
+    rootFieldKind: Mutation
+  description: Insert into the hdb_catalog_hdb_schema_notifications table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_hdb_catalog_hdb_schema_notifications
+  permissions:
+    - role: admin
+      allowExecution: true
+

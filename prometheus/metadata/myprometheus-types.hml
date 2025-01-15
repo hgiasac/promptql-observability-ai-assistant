@@ -16126,3 +16126,23 @@ definition:
   graphql:
     comparisonExpressionTypeName: prom_TargetInfoLabel_comparison_exp
 
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myprometheus
+  dataConnectorScalarType: Boolean
+  representation: Boolean
+  graphql:
+    comparisonExpressionTypeName: prom_Boolean_comparison_exp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: myprometheus
+  dataConnectorScalarType: String
+  representation: String
+  graphql:
+    comparisonExpressionTypeName: prom_String_comparison_exp
+

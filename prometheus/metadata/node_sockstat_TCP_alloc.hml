@@ -567,6 +567,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_sockstat_TCP_alloc
+      subscription:
+        rootField: prom_node_sockstat_TCP_alloc
     selectUniques: []
     argumentsInputType: prom_node_sockstat_TCP_alloc_arguments
     orderByExpressionType: prom_node_sockstat_TCP_alloc_order_by
@@ -581,4 +583,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

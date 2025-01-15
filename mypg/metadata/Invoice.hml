@@ -1,0 +1,188 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Invoice
+  fields:
+    - name: BillingAddress
+      type: varchar
+    - name: BillingCity
+      type: varchar
+    - name: BillingCountry
+      type: varchar
+    - name: BillingPostalCode
+      type: varchar
+    - name: BillingState
+      type: varchar
+    - name: CustomerId
+      type: int4!
+    - name: InvoiceDate
+      type: timestamp!
+    - name: InvoiceId
+      type: int4!
+    - name: Total
+      type: numeric!
+  graphql:
+    typeName: mypg_Invoice
+    inputTypeName: mypg_Invoice_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: Invoice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Invoice
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - BillingAddress
+          - BillingCity
+          - BillingCountry
+          - BillingPostalCode
+          - BillingState
+          - CustomerId
+          - InvoiceDate
+          - InvoiceId
+          - Total
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Invoice_bool_exp
+  operand:
+    object:
+      type: Invoice
+      comparableFields:
+        - fieldName: BillingAddress
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: BillingCity
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: BillingCountry
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: BillingPostalCode
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: BillingState
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: CustomerId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: InvoiceDate
+          booleanExpressionType: timestamp_bool_exp
+        - fieldName: InvoiceId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Total
+          booleanExpressionType: numeric_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_Invoice_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: Invoice_agg_exp
+  operand:
+    object:
+      aggregatedType: Invoice
+      aggregatableFields:
+        - fieldName: BillingAddress
+          aggregateExpression: varchar_agg_exp
+        - fieldName: BillingCity
+          aggregateExpression: varchar_agg_exp
+        - fieldName: BillingCountry
+          aggregateExpression: varchar_agg_exp
+        - fieldName: BillingPostalCode
+          aggregateExpression: varchar_agg_exp
+        - fieldName: BillingState
+          aggregateExpression: varchar_agg_exp
+        - fieldName: CustomerId
+          aggregateExpression: int4_agg_exp
+        - fieldName: InvoiceDate
+          aggregateExpression: timestamp_agg_exp
+        - fieldName: InvoiceId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Total
+          aggregateExpression: numeric_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_Invoice_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: Invoice_order_by_exp
+  operand:
+    object:
+      orderedType: Invoice
+      orderableFields:
+        - fieldName: BillingAddress
+          orderByExpression: varchar_order_by_exp
+        - fieldName: BillingCity
+          orderByExpression: varchar_order_by_exp
+        - fieldName: BillingCountry
+          orderByExpression: varchar_order_by_exp
+        - fieldName: BillingPostalCode
+          orderByExpression: varchar_order_by_exp
+        - fieldName: BillingState
+          orderByExpression: varchar_order_by_exp
+        - fieldName: CustomerId
+          orderByExpression: int4_order_by_exp
+        - fieldName: InvoiceDate
+          orderByExpression: timestamp_order_by_exp
+        - fieldName: InvoiceId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Total
+          orderByExpression: numeric_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_Invoice_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: Invoice
+  objectType: Invoice
+  source:
+    dataConnectorName: mypostgres
+    collection: Invoice
+  filterExpressionType: Invoice_bool_exp
+  aggregateExpression: Invoice_agg_exp
+  orderByExpression: Invoice_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_Invoice
+      subscription:
+        rootField: mypg_Invoice
+    selectUniques:
+      - queryRootField: mypg_Invoice_by_InvoiceId
+        uniqueIdentifier:
+          - InvoiceId
+        subscription:
+          rootField: mypg_Invoice_by_InvoiceId
+    filterInputTypeName: mypg_Invoice_filter_input
+    aggregate:
+      queryRootField: mypg_Invoice_aggregate
+      subscription:
+        rootField: mypg_Invoice_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: Invoice
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

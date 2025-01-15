@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_config_last_reload_successful
+      subscription:
+        rootField: prom_prometheus_config_last_reload_successful
     selectUniques: []
     argumentsInputType: prom_prometheus_config_last_reload_successful_arguments
     orderByExpressionType: prom_prometheus_config_last_reload_successful_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

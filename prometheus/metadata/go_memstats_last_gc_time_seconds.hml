@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_go_memstats_last_gc_time_seconds
+      subscription:
+        rootField: prom_go_memstats_last_gc_time_seconds
     selectUniques: []
     argumentsInputType: prom_go_memstats_last_gc_time_seconds_arguments
     orderByExpressionType: prom_go_memstats_last_gc_time_seconds_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

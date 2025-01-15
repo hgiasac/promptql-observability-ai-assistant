@@ -584,6 +584,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_cooling_device_cur_state
+      subscription:
+        rootField: prom_node_cooling_device_cur_state
     selectUniques: []
     argumentsInputType: prom_node_cooling_device_cur_state_arguments
     orderByExpressionType: prom_node_cooling_device_cur_state_order_by
@@ -598,4 +600,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

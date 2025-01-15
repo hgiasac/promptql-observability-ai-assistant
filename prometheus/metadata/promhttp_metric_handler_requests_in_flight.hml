@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_promhttp_metric_handler_requests_in_flight
+      subscription:
+        rootField: prom_promhttp_metric_handler_requests_in_flight
     selectUniques: []
     argumentsInputType: prom_promhttp_metric_handler_requests_in_flight_arguments
     orderByExpressionType: prom_promhttp_metric_handler_requests_in_flight_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

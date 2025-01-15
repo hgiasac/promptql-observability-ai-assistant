@@ -1,0 +1,106 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_version_object
+  fields:
+    - name: cli_state
+      type: jsonb
+    - name: console_state
+      type: jsonb
+    - name: ee_client_id
+      type: text
+    - name: ee_client_secret
+      type: text
+    - name: hasura_uuid
+      type: uuid
+    - name: upgraded_on
+      type: timestamptz!
+    - name: version
+      type: text!
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_version_object
+    inputTypeName: mypg_insert_hdb_catalog_hdb_version_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_version_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_version_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - cli_state
+          - console_state
+          - ee_client_id
+          - ee_client_secret
+          - hasura_uuid
+          - upgraded_on
+          - version
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_version_response
+  description: Responses from the 'insert_hdb_catalog_hdb_version' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_version!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_version_response
+    inputTypeName: mypg_insert_hdb_catalog_hdb_version_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_version_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_version_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_version
+  outputType: insert_hdb_catalog_hdb_version_response!
+  arguments:
+    - name: objects
+      type: "[insert_hdb_catalog_hdb_version_object!]!"
+    - name: post_check
+      type: hdb_catalog_hdb_version_bool_exp
+      description: Insert permission predicate over the 'hdb_catalog_hdb_version' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_hdb_catalog_hdb_version
+  graphql:
+    rootFieldName: mypg_insert_hdb_catalog_hdb_version
+    rootFieldKind: Mutation
+  description: Insert into the hdb_catalog_hdb_version table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_hdb_catalog_hdb_version
+  permissions:
+    - role: admin
+      allowExecution: true
+

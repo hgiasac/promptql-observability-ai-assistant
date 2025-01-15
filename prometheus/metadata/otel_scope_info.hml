@@ -575,6 +575,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_otel_scope_info
+      subscription:
+        rootField: prom_otel_scope_info
     selectUniques: []
     argumentsInputType: prom_otel_scope_info_arguments
     orderByExpressionType: prom_otel_scope_info_order_by
@@ -589,4 +591,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

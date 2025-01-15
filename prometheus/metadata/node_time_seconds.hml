@@ -567,6 +567,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_time_seconds
+      subscription:
+        rootField: prom_node_time_seconds
     selectUniques: []
     argumentsInputType: prom_node_time_seconds_arguments
     orderByExpressionType: prom_node_time_seconds_order_by
@@ -581,4 +583,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

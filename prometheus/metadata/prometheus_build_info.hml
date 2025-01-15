@@ -623,6 +623,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_build_info
+      subscription:
+        rootField: prom_prometheus_build_info
     selectUniques: []
     argumentsInputType: prom_prometheus_build_info_arguments
     orderByExpressionType: prom_prometheus_build_info_order_by
@@ -639,4 +641,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

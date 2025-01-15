@@ -1,0 +1,125 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaType
+  fields:
+    - name: MediaTypeId
+      type: int4!
+    - name: Name
+      type: varchar
+  graphql:
+    typeName: mypg_MediaType
+    inputTypeName: mypg_MediaType_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: MediaType
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaType
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - MediaTypeId
+          - Name
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: MediaType_bool_exp
+  operand:
+    object:
+      type: MediaType
+      comparableFields:
+        - fieldName: MediaTypeId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Name
+          booleanExpressionType: varchar_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_MediaType_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: MediaType_agg_exp
+  operand:
+    object:
+      aggregatedType: MediaType
+      aggregatableFields:
+        - fieldName: MediaTypeId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Name
+          aggregateExpression: varchar_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_MediaType_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: MediaType_order_by_exp
+  operand:
+    object:
+      orderedType: MediaType
+      orderableFields:
+        - fieldName: MediaTypeId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Name
+          orderByExpression: varchar_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_MediaType_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: MediaType
+  objectType: MediaType
+  source:
+    dataConnectorName: mypostgres
+    collection: MediaType
+  filterExpressionType: MediaType_bool_exp
+  aggregateExpression: MediaType_agg_exp
+  orderByExpression: MediaType_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_MediaType
+      subscription:
+        rootField: mypg_MediaType
+    selectUniques:
+      - queryRootField: mypg_MediaType_by_MediaTypeId
+        uniqueIdentifier:
+          - MediaTypeId
+        subscription:
+          rootField: mypg_MediaType_by_MediaTypeId
+    filterInputTypeName: mypg_MediaType_filter_input
+    aggregate:
+      queryRootField: mypg_MediaType_aggregate
+      subscription:
+        rootField: mypg_MediaType_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: MediaType
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

@@ -1,0 +1,91 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Playlist_object
+  fields:
+    - name: Name
+      type: varchar
+    - name: PlaylistId
+      type: int4!
+  graphql:
+    typeName: mypg_insert_Playlist_object
+    inputTypeName: mypg_insert_Playlist_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Playlist_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Playlist_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - Name
+          - PlaylistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Playlist_response
+  description: Responses from the 'insert_Playlist' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Playlist!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_Playlist_response
+    inputTypeName: mypg_insert_Playlist_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Playlist_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Playlist_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_Playlist
+  outputType: insert_Playlist_response!
+  arguments:
+    - name: objects
+      type: "[insert_Playlist_object!]!"
+    - name: post_check
+      type: Playlist_bool_exp
+      description: Insert permission predicate over the 'Playlist' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_Playlist
+  graphql:
+    rootFieldName: mypg_insert_Playlist
+    rootFieldKind: Mutation
+  description: Insert into the Playlist table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_Playlist
+  permissions:
+    - role: admin
+      allowExecution: true
+

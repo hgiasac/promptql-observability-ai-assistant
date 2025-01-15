@@ -1,0 +1,125 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Genre
+  fields:
+    - name: GenreId
+      type: int4!
+    - name: Name
+      type: varchar
+  graphql:
+    typeName: mypg_Genre
+    inputTypeName: mypg_Genre_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: Genre
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Genre
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - GenreId
+          - Name
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Genre_bool_exp
+  operand:
+    object:
+      type: Genre
+      comparableFields:
+        - fieldName: GenreId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Name
+          booleanExpressionType: varchar_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_Genre_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: Genre_agg_exp
+  operand:
+    object:
+      aggregatedType: Genre
+      aggregatableFields:
+        - fieldName: GenreId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Name
+          aggregateExpression: varchar_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_Genre_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: Genre_order_by_exp
+  operand:
+    object:
+      orderedType: Genre
+      orderableFields:
+        - fieldName: GenreId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Name
+          orderByExpression: varchar_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_Genre_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: Genre
+  objectType: Genre
+  source:
+    dataConnectorName: mypostgres
+    collection: Genre
+  filterExpressionType: Genre_bool_exp
+  aggregateExpression: Genre_agg_exp
+  orderByExpression: Genre_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_Genre
+      subscription:
+        rootField: mypg_Genre
+    selectUniques:
+      - queryRootField: mypg_Genre_by_GenreId
+        uniqueIdentifier:
+          - GenreId
+        subscription:
+          rootField: mypg_Genre_by_GenreId
+    filterInputTypeName: mypg_Genre_filter_input
+    aggregate:
+      queryRootField: mypg_Genre_aggregate
+      subscription:
+        rootField: mypg_Genre_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: Genre
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

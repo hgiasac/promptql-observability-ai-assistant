@@ -1,0 +1,480 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_archived
+  description: Update the 'archived' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: bool!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_archived
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_archived_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_archived
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_archived
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_created_at
+  description: Update the 'created_at' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: timestamp
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_created_at
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_created_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_delivered
+  description: Update the 'delivered' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: bool!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_delivered
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_delivered_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_delivered
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_delivered
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_error
+  description: Update the 'error' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: bool!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_error
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_error_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_error
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_error
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_id
+  description: Update the 'id' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_id
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_locked
+  description: Update the 'locked' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_locked
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_locked_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_locked
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_locked
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_next_retry_at
+  description: Update the 'next_retry_at' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: timestamp
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_next_retry_at
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_next_retry_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_next_retry_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_next_retry_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_payload
+  description: Update the 'payload' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: jsonb!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_payload
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_payload_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_payload
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_payload
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_schema_name
+  description: Update the 'schema_name' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_schema_name
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_schema_name_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_schema_name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_schema_name
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_table_name
+  description: Update the 'table_name' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_table_name
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_table_name_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_table_name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_table_name
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_tries
+  description: Update the 'tries' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: int4!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_tries
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_tries_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_tries
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_tries
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_hdb_catalog_event_log_trigger_name
+  description: Update the 'trigger_name' column in the 'hdb_catalog_event_log' collection
+  fields:
+    - name: _set
+      type: text!
+      description: Set the column to this value
+  graphql:
+    typeName: mypg_update_column_hdb_catalog_event_log_trigger_name
+    inputTypeName: mypg_update_column_hdb_catalog_event_log_trigger_name_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hdb_catalog_event_log_trigger_name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_hdb_catalog_event_log_trigger_name
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - _set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_event_log_by_id_update_columns
+  description: Update the columns of the 'hdb_catalog_event_log' collection
+  fields:
+    - name: archived
+      type: update_column_hdb_catalog_event_log_archived
+      description: Update the 'archived' column in the 'hdb_catalog_event_log' collection.
+    - name: created_at
+      type: update_column_hdb_catalog_event_log_created_at
+      description: Update the 'created_at' column in the 'hdb_catalog_event_log' collection.
+    - name: delivered
+      type: update_column_hdb_catalog_event_log_delivered
+      description: Update the 'delivered' column in the 'hdb_catalog_event_log' collection.
+    - name: error
+      type: update_column_hdb_catalog_event_log_error
+      description: Update the 'error' column in the 'hdb_catalog_event_log' collection.
+    - name: id
+      type: update_column_hdb_catalog_event_log_id
+      description: Update the 'id' column in the 'hdb_catalog_event_log' collection.
+    - name: locked
+      type: update_column_hdb_catalog_event_log_locked
+      description: Update the 'locked' column in the 'hdb_catalog_event_log' collection.
+    - name: next_retry_at
+      type: update_column_hdb_catalog_event_log_next_retry_at
+      description: Update the 'next_retry_at' column in the 'hdb_catalog_event_log'
+        collection.
+    - name: payload
+      type: update_column_hdb_catalog_event_log_payload
+      description: Update the 'payload' column in the 'hdb_catalog_event_log' collection.
+    - name: schema_name
+      type: update_column_hdb_catalog_event_log_schema_name
+      description: Update the 'schema_name' column in the 'hdb_catalog_event_log'
+        collection.
+    - name: table_name
+      type: update_column_hdb_catalog_event_log_table_name
+      description: Update the 'table_name' column in the 'hdb_catalog_event_log' collection.
+    - name: tries
+      type: update_column_hdb_catalog_event_log_tries
+      description: Update the 'tries' column in the 'hdb_catalog_event_log' collection.
+    - name: trigger_name
+      type: update_column_hdb_catalog_event_log_trigger_name
+      description: Update the 'trigger_name' column in the 'hdb_catalog_event_log'
+        collection.
+  graphql:
+    typeName: mypg_update_hdb_catalog_event_log_by_id_update_columns
+    inputTypeName: mypg_update_hdb_catalog_event_log_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_event_log_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_event_log_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - archived
+          - created_at
+          - delivered
+          - error
+          - id
+          - locked
+          - next_retry_at
+          - payload
+          - schema_name
+          - table_name
+          - tries
+          - trigger_name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_hdb_catalog_event_log_by_id_response
+  description: Responses from the 'update_hdb_catalog_event_log_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_event_log!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_update_hdb_catalog_event_log_by_id_response
+    inputTypeName: mypg_update_hdb_catalog_event_log_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hdb_catalog_event_log_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_hdb_catalog_event_log_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_hdb_catalog_event_log_by_id
+  outputType: update_hdb_catalog_event_log_by_id_response!
+  arguments:
+    - name: key_id
+      type: text!
+    - name: post_check
+      type: hdb_catalog_event_log_bool_exp
+      description: Update permission post-condition predicate over the
+        'hdb_catalog_event_log' collection
+    - name: pre_check
+      type: hdb_catalog_event_log_bool_exp
+      description: Update permission pre-condition predicate over the
+        'hdb_catalog_event_log' collection
+    - name: update_columns
+      type: update_hdb_catalog_event_log_by_id_update_columns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hdb_catalog_event_log_by_id
+  graphql:
+    rootFieldName: mypg_update_hdb_catalog_event_log_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'hdb_catalog_event_log' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_hdb_catalog_event_log_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

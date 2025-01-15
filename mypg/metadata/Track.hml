@@ -1,0 +1,188 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Track
+  fields:
+    - name: AlbumId
+      type: int4
+    - name: Bytes
+      type: int4
+    - name: Composer
+      type: varchar
+    - name: GenreId
+      type: int4
+    - name: MediaTypeId
+      type: int4!
+    - name: Milliseconds
+      type: int4!
+    - name: Name
+      type: varchar!
+    - name: TrackId
+      type: int4!
+    - name: UnitPrice
+      type: numeric!
+  graphql:
+    typeName: mypg_Track
+    inputTypeName: mypg_Track_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: Track
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Track
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - AlbumId
+          - Bytes
+          - Composer
+          - GenreId
+          - MediaTypeId
+          - Milliseconds
+          - Name
+          - TrackId
+          - UnitPrice
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: Track_bool_exp
+  operand:
+    object:
+      type: Track
+      comparableFields:
+        - fieldName: AlbumId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Bytes
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Composer
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: GenreId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: MediaTypeId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Milliseconds
+          booleanExpressionType: int4_bool_exp
+        - fieldName: Name
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: TrackId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: UnitPrice
+          booleanExpressionType: numeric_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_Track_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: Track_agg_exp
+  operand:
+    object:
+      aggregatedType: Track
+      aggregatableFields:
+        - fieldName: AlbumId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Bytes
+          aggregateExpression: int4_agg_exp
+        - fieldName: Composer
+          aggregateExpression: varchar_agg_exp
+        - fieldName: GenreId
+          aggregateExpression: int4_agg_exp
+        - fieldName: MediaTypeId
+          aggregateExpression: int4_agg_exp
+        - fieldName: Milliseconds
+          aggregateExpression: int4_agg_exp
+        - fieldName: Name
+          aggregateExpression: varchar_agg_exp
+        - fieldName: TrackId
+          aggregateExpression: int4_agg_exp
+        - fieldName: UnitPrice
+          aggregateExpression: numeric_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_Track_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: Track_order_by_exp
+  operand:
+    object:
+      orderedType: Track
+      orderableFields:
+        - fieldName: AlbumId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Bytes
+          orderByExpression: int4_order_by_exp
+        - fieldName: Composer
+          orderByExpression: varchar_order_by_exp
+        - fieldName: GenreId
+          orderByExpression: int4_order_by_exp
+        - fieldName: MediaTypeId
+          orderByExpression: int4_order_by_exp
+        - fieldName: Milliseconds
+          orderByExpression: int4_order_by_exp
+        - fieldName: Name
+          orderByExpression: varchar_order_by_exp
+        - fieldName: TrackId
+          orderByExpression: int4_order_by_exp
+        - fieldName: UnitPrice
+          orderByExpression: numeric_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_Track_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: Track
+  objectType: Track
+  source:
+    dataConnectorName: mypostgres
+    collection: Track
+  filterExpressionType: Track_bool_exp
+  aggregateExpression: Track_agg_exp
+  orderByExpression: Track_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_Track
+      subscription:
+        rootField: mypg_Track
+    selectUniques:
+      - queryRootField: mypg_Track_by_TrackId
+        uniqueIdentifier:
+          - TrackId
+        subscription:
+          rootField: mypg_Track_by_TrackId
+    filterInputTypeName: mypg_Track_filter_input
+    aggregate:
+      queryRootField: mypg_Track_aggregate
+      subscription:
+        rootField: mypg_Track_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: Track
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

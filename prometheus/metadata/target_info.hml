@@ -607,6 +607,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_target_info
+      subscription:
+        rootField: prom_target_info
     selectUniques: []
     argumentsInputType: prom_target_info_arguments
     orderByExpressionType: prom_target_info_order_by
@@ -621,4 +623,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name_response
+  description: Responses from the
+    'delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name'
+    procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_event_log_cleanups!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name_response
+    inputTypeName: mypg_delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name
+  outputType: delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name_response!
+  arguments:
+    - name: key_scheduled_at
+      type: timestamp!
+    - name: key_trigger_name
+      type: text!
+    - name: pre_check
+      type: hdb_catalog_hdb_event_log_cleanups_bool_exp
+      description: Delete permission predicate over the
+        'hdb_catalog_hdb_event_log_cleanups' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name
+  graphql:
+    rootFieldName: mypg_delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name
+    rootFieldKind: Mutation
+  description: Delete any row on the 'hdb_catalog_hdb_event_log_cleanups'
+    collection using the 'scheduled_at' and 'trigger_name' keys
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_hdb_catalog_hdb_event_log_cleanups_by_scheduled_at_and_trigger_name
+  permissions:
+    - role: admin
+      allowExecution: true
+

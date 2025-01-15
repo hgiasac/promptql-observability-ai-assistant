@@ -1,0 +1,104 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_event_log_cleanups_object
+  fields:
+    - name: deleted_event_invocation_logs
+      type: int4
+    - name: deleted_event_logs
+      type: int4
+    - name: id
+      type: text
+    - name: scheduled_at
+      type: timestamp!
+    - name: status
+      type: text!
+    - name: trigger_name
+      type: text!
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_event_log_cleanups_object
+    inputTypeName: mypg_insert_hdb_catalog_hdb_event_log_cleanups_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_event_log_cleanups_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_event_log_cleanups_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - deleted_event_invocation_logs
+          - deleted_event_logs
+          - id
+          - scheduled_at
+          - status
+          - trigger_name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_event_log_cleanups_response
+  description: Responses from the 'insert_hdb_catalog_hdb_event_log_cleanups' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_event_log_cleanups!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_hdb_catalog_hdb_event_log_cleanups_response
+    inputTypeName: mypg_insert_hdb_catalog_hdb_event_log_cleanups_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hdb_catalog_hdb_event_log_cleanups_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_hdb_catalog_hdb_event_log_cleanups_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_hdb_catalog_hdb_event_log_cleanups
+  outputType: insert_hdb_catalog_hdb_event_log_cleanups_response!
+  arguments:
+    - name: objects
+      type: "[insert_hdb_catalog_hdb_event_log_cleanups_object!]!"
+    - name: post_check
+      type: hdb_catalog_hdb_event_log_cleanups_bool_exp
+      description: Insert permission predicate over the
+        'hdb_catalog_hdb_event_log_cleanups' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_hdb_catalog_hdb_event_log_cleanups
+  graphql:
+    rootFieldName: mypg_insert_hdb_catalog_hdb_event_log_cleanups
+    rootFieldKind: Mutation
+  description: Insert into the hdb_catalog_hdb_event_log_cleanups table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_hdb_catalog_hdb_event_log_cleanups
+  permissions:
+    - role: admin
+      allowExecution: true
+

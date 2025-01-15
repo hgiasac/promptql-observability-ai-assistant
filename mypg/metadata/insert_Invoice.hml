@@ -1,0 +1,112 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Invoice_object
+  fields:
+    - name: BillingAddress
+      type: varchar
+    - name: BillingCity
+      type: varchar
+    - name: BillingCountry
+      type: varchar
+    - name: BillingPostalCode
+      type: varchar
+    - name: BillingState
+      type: varchar
+    - name: CustomerId
+      type: int4!
+    - name: InvoiceDate
+      type: timestamp!
+    - name: InvoiceId
+      type: int4!
+    - name: Total
+      type: numeric!
+  graphql:
+    typeName: mypg_insert_Invoice_object
+    inputTypeName: mypg_insert_Invoice_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Invoice_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Invoice_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - BillingAddress
+          - BillingCity
+          - BillingCountry
+          - BillingPostalCode
+          - BillingState
+          - CustomerId
+          - InvoiceDate
+          - InvoiceId
+          - Total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_Invoice_response
+  description: Responses from the 'insert_Invoice' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Invoice!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_insert_Invoice_response
+    inputTypeName: mypg_insert_Invoice_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_Invoice_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_Invoice_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_Invoice
+  outputType: insert_Invoice_response!
+  arguments:
+    - name: objects
+      type: "[insert_Invoice_object!]!"
+    - name: post_check
+      type: Invoice_bool_exp
+      description: Insert permission predicate over the 'Invoice' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_Invoice
+  graphql:
+    rootFieldName: mypg_insert_Invoice
+    rootFieldKind: Mutation
+  description: Insert into the Invoice table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_Invoice
+  permissions:
+    - role: admin
+      allowExecution: true
+

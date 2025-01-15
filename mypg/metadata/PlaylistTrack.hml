@@ -1,0 +1,126 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrack
+  fields:
+    - name: PlaylistId
+      type: int4!
+    - name: TrackId
+      type: int4!
+  graphql:
+    typeName: mypg_PlaylistTrack
+    inputTypeName: mypg_PlaylistTrack_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: PlaylistTrack
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrack
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - PlaylistId
+          - TrackId
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: PlaylistTrack_bool_exp
+  operand:
+    object:
+      type: PlaylistTrack
+      comparableFields:
+        - fieldName: PlaylistId
+          booleanExpressionType: int4_bool_exp
+        - fieldName: TrackId
+          booleanExpressionType: int4_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_PlaylistTrack_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: PlaylistTrack_agg_exp
+  operand:
+    object:
+      aggregatedType: PlaylistTrack
+      aggregatableFields:
+        - fieldName: PlaylistId
+          aggregateExpression: int4_agg_exp
+        - fieldName: TrackId
+          aggregateExpression: int4_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_PlaylistTrack_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: PlaylistTrack_order_by_exp
+  operand:
+    object:
+      orderedType: PlaylistTrack
+      orderableFields:
+        - fieldName: PlaylistId
+          orderByExpression: int4_order_by_exp
+        - fieldName: TrackId
+          orderByExpression: int4_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_PlaylistTrack_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: PlaylistTrack
+  objectType: PlaylistTrack
+  source:
+    dataConnectorName: mypostgres
+    collection: PlaylistTrack
+  filterExpressionType: PlaylistTrack_bool_exp
+  aggregateExpression: PlaylistTrack_agg_exp
+  orderByExpression: PlaylistTrack_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_PlaylistTrack
+      subscription:
+        rootField: mypg_PlaylistTrack
+    selectUniques:
+      - queryRootField: mypg_PlaylistTrack_by_PK_PlaylistTrack
+        uniqueIdentifier:
+          - PlaylistId
+          - TrackId
+        subscription:
+          rootField: mypg_PlaylistTrack_by_PK_PlaylistTrack
+    filterInputTypeName: mypg_PlaylistTrack_filter_input
+    aggregate:
+      queryRootField: mypg_PlaylistTrack_aggregate
+      subscription:
+        rootField: mypg_PlaylistTrack_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: PlaylistTrack
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

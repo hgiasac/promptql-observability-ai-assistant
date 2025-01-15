@@ -1,0 +1,65 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_PlaylistTrack_by_PlaylistId_and_TrackId_response
+  description: Responses from the 'delete_PlaylistTrack_by_PlaylistId_and_TrackId' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[PlaylistTrack!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_delete_PlaylistTrack_by_PlaylistId_and_TrackId_response
+    inputTypeName: mypg_delete_PlaylistTrack_by_PlaylistId_and_TrackId_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_PlaylistTrack_by_PlaylistId_and_TrackId_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_PlaylistTrack_by_PlaylistId_and_TrackId_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_PlaylistTrack_by_PlaylistId_and_TrackId
+  outputType: delete_PlaylistTrack_by_PlaylistId_and_TrackId_response!
+  arguments:
+    - name: key_PlaylistId
+      type: int4!
+    - name: key_TrackId
+      type: int4!
+    - name: pre_check
+      type: PlaylistTrack_bool_exp
+      description: Delete permission predicate over the 'PlaylistTrack' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_PlaylistTrack_by_PlaylistId_and_TrackId
+  graphql:
+    rootFieldName: mypg_delete_PlaylistTrack_by_PlaylistId_and_TrackId
+    rootFieldKind: Mutation
+  description: Delete any row on the 'PlaylistTrack' collection using the
+    'PlaylistId' and 'TrackId' keys
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_PlaylistTrack_by_PlaylistId_and_TrackId
+  permissions:
+    - role: admin
+      allowExecution: true
+

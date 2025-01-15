@@ -1,0 +1,120 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: hdb_catalog_hdb_source_catalog_version
+  fields:
+    - name: upgraded_on
+      type: timestamptz!
+    - name: version
+      type: text!
+  graphql:
+    typeName: mypg_hdb_catalog_hdb_source_catalog_version
+    inputTypeName: mypg_hdb_catalog_hdb_source_catalog_version_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: hdb_catalog_hdb_source_catalog_version
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: hdb_catalog_hdb_source_catalog_version
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - upgraded_on
+          - version
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: hdb_catalog_hdb_source_catalog_version_bool_exp
+  operand:
+    object:
+      type: hdb_catalog_hdb_source_catalog_version
+      comparableFields:
+        - fieldName: upgraded_on
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: version
+          booleanExpressionType: text_bool_exp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: mypg_hdb_catalog_hdb_source_catalog_version_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: hdb_catalog_hdb_source_catalog_version_agg_exp
+  operand:
+    object:
+      aggregatedType: hdb_catalog_hdb_source_catalog_version
+      aggregatableFields:
+        - fieldName: upgraded_on
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: version
+          aggregateExpression: text_agg_exp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: mypg_hdb_catalog_hdb_source_catalog_version_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: hdb_catalog_hdb_source_catalog_version_order_by_exp
+  operand:
+    object:
+      orderedType: hdb_catalog_hdb_source_catalog_version
+      orderableFields:
+        - fieldName: upgraded_on
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: version
+          orderByExpression: text_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: mypg_hdb_catalog_hdb_source_catalog_version_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: hdb_catalog_hdb_source_catalog_version
+  objectType: hdb_catalog_hdb_source_catalog_version
+  source:
+    dataConnectorName: mypostgres
+    collection: hdb_catalog_hdb_source_catalog_version
+  filterExpressionType: hdb_catalog_hdb_source_catalog_version_bool_exp
+  aggregateExpression: hdb_catalog_hdb_source_catalog_version_agg_exp
+  orderByExpression: hdb_catalog_hdb_source_catalog_version_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: mypg_hdb_catalog_hdb_source_catalog_version
+      subscription:
+        rootField: mypg_hdb_catalog_hdb_source_catalog_version
+    selectUniques: []
+    filterInputTypeName: mypg_hdb_catalog_hdb_source_catalog_version_filter_input
+    aggregate:
+      queryRootField: mypg_hdb_catalog_hdb_source_catalog_version_aggregate
+      subscription:
+        rootField: mypg_hdb_catalog_hdb_source_catalog_version_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: hdb_catalog_hdb_source_catalog_version
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+

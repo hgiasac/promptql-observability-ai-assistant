@@ -575,6 +575,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_network_flags
+      subscription:
+        rootField: prom_node_network_flags
     selectUniques: []
     argumentsInputType: prom_node_network_flags_arguments
     orderByExpressionType: prom_node_network_flags_order_by
@@ -589,4 +591,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

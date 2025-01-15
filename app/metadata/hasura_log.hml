@@ -148,6 +148,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: hasura_log
+      subscription:
+        rootField: hasura_log
     selectUniques: []
     argumentsInputType: hasura_log_arguments
     orderByExpressionType: hasura_log_order_by
@@ -161,4 +163,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

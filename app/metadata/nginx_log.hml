@@ -180,6 +180,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: nginx_log
+      subscription:
+        rootField: nginx_log
     selectUniques: []
     argumentsInputType: nginx_log_arguments
     orderByExpressionType: nginx_log_order_by
@@ -193,4 +195,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

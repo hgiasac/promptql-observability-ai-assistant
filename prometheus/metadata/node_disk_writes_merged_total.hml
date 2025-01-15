@@ -576,6 +576,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_disk_writes_merged_total
+      subscription:
+        rootField: prom_node_disk_writes_merged_total
     selectUniques: []
     argumentsInputType: prom_node_disk_writes_merged_total_arguments
     orderByExpressionType: prom_node_disk_writes_merged_total_order_by
@@ -590,4 +592,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

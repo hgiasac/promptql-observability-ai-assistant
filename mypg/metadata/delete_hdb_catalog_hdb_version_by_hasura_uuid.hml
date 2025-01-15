@@ -1,0 +1,63 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_hdb_catalog_hdb_version_by_hasura_uuid_response
+  description: Responses from the 'delete_hdb_catalog_hdb_version_by_hasura_uuid' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_version!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_delete_hdb_catalog_hdb_version_by_hasura_uuid_response
+    inputTypeName: mypg_delete_hdb_catalog_hdb_version_by_hasura_uuid_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_hdb_catalog_hdb_version_by_hasura_uuid_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_hdb_catalog_hdb_version_by_hasura_uuid_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_hdb_catalog_hdb_version_by_hasura_uuid
+  outputType: delete_hdb_catalog_hdb_version_by_hasura_uuid_response!
+  arguments:
+    - name: key_hasura_uuid
+      type: uuid!
+    - name: pre_check
+      type: hdb_catalog_hdb_version_bool_exp
+      description: Delete permission predicate over the 'hdb_catalog_hdb_version' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_hdb_catalog_hdb_version_by_hasura_uuid
+  graphql:
+    rootFieldName: mypg_delete_hdb_catalog_hdb_version_by_hasura_uuid
+    rootFieldKind: Mutation
+  description: Delete any row on the 'hdb_catalog_hdb_version' collection using
+    the 'hasura_uuid' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_hdb_catalog_hdb_version_by_hasura_uuid
+  permissions:
+    - role: admin
+      allowExecution: true
+

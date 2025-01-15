@@ -568,6 +568,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_timex_pps_jitter_seconds
+      subscription:
+        rootField: prom_node_timex_pps_jitter_seconds
     selectUniques: []
     argumentsInputType: prom_node_timex_pps_jitter_seconds_arguments
     orderByExpressionType: prom_node_timex_pps_jitter_seconds_order_by
@@ -582,4 +584,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

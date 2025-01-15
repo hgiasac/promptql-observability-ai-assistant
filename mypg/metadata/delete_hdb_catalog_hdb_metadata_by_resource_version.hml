@@ -1,0 +1,65 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_hdb_catalog_hdb_metadata_by_resource_version_response
+  description: Responses from the
+    'delete_hdb_catalog_hdb_metadata_by_resource_version' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[hdb_catalog_hdb_metadata!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_delete_hdb_catalog_hdb_metadata_by_resource_version_response
+    inputTypeName: mypg_delete_hdb_catalog_hdb_metadata_by_resource_version_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_hdb_catalog_hdb_metadata_by_resource_version_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_hdb_catalog_hdb_metadata_by_resource_version_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_hdb_catalog_hdb_metadata_by_resource_version
+  outputType: delete_hdb_catalog_hdb_metadata_by_resource_version_response!
+  arguments:
+    - name: key_resource_version
+      type: int4!
+    - name: pre_check
+      type: hdb_catalog_hdb_metadata_bool_exp
+      description: Delete permission predicate over the 'hdb_catalog_hdb_metadata'
+        collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_hdb_catalog_hdb_metadata_by_resource_version
+  graphql:
+    rootFieldName: mypg_delete_hdb_catalog_hdb_metadata_by_resource_version
+    rootFieldKind: Mutation
+  description: Delete any row on the 'hdb_catalog_hdb_metadata' collection using
+    the 'resource_version' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_hdb_catalog_hdb_metadata_by_resource_version
+  permissions:
+    - role: admin
+      allowExecution: true
+

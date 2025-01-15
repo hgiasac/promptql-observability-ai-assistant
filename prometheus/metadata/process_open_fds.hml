@@ -567,6 +567,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_process_open_fds
+      subscription:
+        rootField: prom_process_open_fds
     selectUniques: []
     argumentsInputType: prom_process_open_fds_arguments
     orderByExpressionType: prom_process_open_fds_order_by
@@ -581,4 +583,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

@@ -584,6 +584,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_prometheus_sd_kubernetes_events_total
+      subscription:
+        rootField: prom_prometheus_sd_kubernetes_events_total
     selectUniques: []
     argumentsInputType: prom_prometheus_sd_kubernetes_events_total_arguments
     orderByExpressionType: prom_prometheus_sd_kubernetes_events_total_order_by
@@ -598,4 +600,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

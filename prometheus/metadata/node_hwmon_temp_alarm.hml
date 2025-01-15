@@ -583,6 +583,8 @@ definition:
   graphql:
     selectMany:
       queryRootField: prom_node_hwmon_temp_alarm
+      subscription:
+        rootField: prom_node_hwmon_temp_alarm
     selectUniques: []
     argumentsInputType: prom_node_hwmon_temp_alarm_arguments
     orderByExpressionType: prom_node_hwmon_temp_alarm_order_by
@@ -597,4 +599,5 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
 

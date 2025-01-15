@@ -1,0 +1,62 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_Album_by_AlbumId_response
+  description: Responses from the 'delete_Album_by_AlbumId' procedure
+  fields:
+    - name: affected_rows
+      type: int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[Album!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: mypg_delete_Album_by_AlbumId_response
+    inputTypeName: mypg_delete_Album_by_AlbumId_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_Album_by_AlbumId_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_Album_by_AlbumId_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_Album_by_AlbumId
+  outputType: delete_Album_by_AlbumId_response!
+  arguments:
+    - name: key_AlbumId
+      type: int4!
+    - name: pre_check
+      type: Album_bool_exp
+      description: Delete permission predicate over the 'Album' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_Album_by_AlbumId
+  graphql:
+    rootFieldName: mypg_delete_Album_by_AlbumId
+    rootFieldKind: Mutation
+  description: Delete any row on the 'Album' collection using the 'AlbumId' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_Album_by_AlbumId
+  permissions:
+    - role: admin
+      allowExecution: true
+
